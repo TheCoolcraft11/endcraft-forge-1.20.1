@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.block.custom.EnderForgeConverterBlock;
 import net.thecoolcraft11.endcraft.item.ModItems;
 
 import java.util.function.Supplier;
@@ -22,6 +23,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ENDERITE_ORE = registerBlock("enderite_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).sound(SoundType.AMETHYST).destroyTime(10f).explosionResistance(10f)));
+    public static final RegistryObject<Block> ENDER_FORGE_CONVERTER = registerBlock("ender_forge_converter",
+            () -> new EnderForgeConverterBlock(BlockBehaviour.Properties.copy(Blocks.REINFORCED_DEEPSLATE).noOcclusion()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

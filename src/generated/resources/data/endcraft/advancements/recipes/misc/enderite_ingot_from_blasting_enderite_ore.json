@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_end_essence": {
+    "has_enderite_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "endcraft:end_essence"
+              "endcraft:enderite_ore"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "endcraft:end_essence_from_blasting_end_essence"
+        "recipe": "endcraft:enderite_ingot_from_blasting_enderite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_end_essence",
+      "has_enderite_ore",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "endcraft:end_essence_from_blasting_end_essence"
+      "endcraft:enderite_ingot_from_blasting_enderite_ore"
     ]
   },
   "sends_telemetry_event": false

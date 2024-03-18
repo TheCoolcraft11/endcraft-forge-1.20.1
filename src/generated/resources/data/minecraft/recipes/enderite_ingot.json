@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "endcraft:enderite_ore"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "endcraft:enderite_ingot"
+  }
+}
