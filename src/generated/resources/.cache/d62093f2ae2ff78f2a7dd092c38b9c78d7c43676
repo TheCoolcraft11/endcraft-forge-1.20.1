@@ -1,6 +1,8 @@
-// 1.20.1	2024-03-17T19:12:53.1116928	Block States: endcraft
+// 1.20.1	2024-03-19T16:36:07.2126754	Block States: endcraft
 2eb41102ad18670619af4b8bb64fa09ef2328355 assets/endcraft/blockstates/enderite_ore.json
+3d2b4aa6160031817fc075b1e172b9d4c2dc2f63 assets/endcraft/blockstates/ender_charger.json
 0922a7be7fd6f80e9d2ba9b7bf02b9c3ee9752ff assets/endcraft/blockstates/ender_forge_converter.json
 7c1accdb10c0f042b8c0e07051e49cab33bda27b assets/endcraft/models/block/enderite_ore.json
 760e786fa1cc2902449b7df002b841a45d405f41 assets/endcraft/models/item/enderite_ore.json
+4e7a6cd5bed716fe814af52647976416969a9e81 assets/endcraft/models/item/ender_charger.json
 cab4d9d77f1ab249d11910ca90496c5612b4e7b8 assets/endcraft/models/item/ender_forge_converter.json

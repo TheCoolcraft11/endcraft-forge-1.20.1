@@ -12,6 +12,7 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Endcraft.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<EnderForgeConverterBlockEntity>> ENDER_FORGE_BE = BLOCK_ENTITIES.register("ender_forge_be",() ->BlockEntityType.Builder.of(EnderForgeConverterBlockEntity::new, ModBlocks.ENDER_FORGE_CONVERTER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<EnderChargerBlockEntity>> ENDER_CHARGER_BE = BLOCK_ENTITIES.register("ender_charger_be",() ->BlockEntityType.Builder.of(EnderChargerBlockEntity::new, ModBlocks.ENDER_CHARGER_BLOCK.get()).build(null));
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

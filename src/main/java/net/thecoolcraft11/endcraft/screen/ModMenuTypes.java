@@ -16,6 +16,8 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<EnderForgeConverterMenu>> ENDER_FORGE_CONVERTER_MENU =
             registerMenuType("ender_forge_converter_menu", EnderForgeConverterMenu::new);
+    public static final RegistryObject<MenuType<EnderChargerMenu>> ENDER_CHARGER_MENU =
+            registerMenuType("ender_charger_menu", EnderChargerMenu::new);
 
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

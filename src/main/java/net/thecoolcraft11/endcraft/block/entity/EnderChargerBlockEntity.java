@@ -11,8 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,28 +19,32 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.item.ModItems;
-import net.thecoolcraft11.endcraft.screen.EnderForgeConverterMenu;
+import net.thecoolcraft11.endcraft.screen.EnderChargerMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class EnderForgeConverterBlockEntity extends BlockEntity implements MenuProvider {
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
+public class EnderChargerBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(2);
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     protected final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 1000;
-    public EnderForgeConverterBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ENDER_FORGE_BE.get(), pPos, pBlockState);
+    int energytomove = 1;
+
+    public EnderChargerBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.ENDER_CHARGER_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> EnderForgeConverterBlockEntity.this.progress;
-                    case 1 -> EnderForgeConverterBlockEntity.this.maxProgress;
+                    case 0 -> EnderChargerBlockEntity.this.energytomove;
                     default -> 0;
                 };
             }
@@ -50,8 +52,7 @@ public class EnderForgeConverterBlockEntity extends BlockEntity implements MenuP
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> EnderForgeConverterBlockEntity.this.progress = pValue;
-                    case 1 -> EnderForgeConverterBlockEntity.this.maxProgress = pValue;
+                    case 0 -> EnderChargerBlockEntity.this.energytomove = pValue;
                 }
             }
 
@@ -97,13 +98,13 @@ public class EnderForgeConverterBlockEntity extends BlockEntity implements MenuP
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new EnderForgeConverterMenu(i, inventory, this, this.data);
+        return new EnderChargerMenu(i, inventory, this, this.data);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", inventory.serializeNBT());
-        pTag.putInt("ender_forge_converter.progress", progress);
+        pTag.putInt("ender_charger.energiestomove", energytomove);
 
         super.saveAdditional(pTag);
     }
@@ -112,87 +113,53 @@ public class EnderForgeConverterBlockEntity extends BlockEntity implements MenuP
     public void load(CompoundTag pTag) {
         super.load(pTag);
         inventory.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("ender_forge_converter.progress");
+        energytomove = pTag.getInt("ender_charger.energiestomove");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()) {
-            increaseProgress();
             setChanged(pLevel, pPos, pState);
 
-            if(hasProgressFinished()) {
                 craftItem();
-                resetProgress();
-            }
         }else {
-            resetProgress();
+            energytomove = 1;
         }
     }
 
-    private void resetProgress() {
-        progress = 0;
-    }
-
+    int nextE = 0;
     private void craftItem() {
-        int damage = this.inventory.getStackInSlot(OUTPUT_SLOT).getDamageValue();
-        this.inventory.extractItem(INPUT_SLOT, 1, false);
-        this.inventory.setStackInSlot(OUTPUT_SLOT, getTool());
-        this.inventory.getStackInSlot(OUTPUT_SLOT).setDamageValue(damage);
+        if (this.inventory.getStackInSlot(INPUT_SLOT).isEmpty() || this.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.inventory.getStackInSlot(OUTPUT_SLOT).getDamageValue() == 0 || this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("Energies") == 0) {
+            energytomove = 1;
+        }
+
+        this.inventory.getStackInSlot(OUTPUT_SLOT).setDamageValue(this.inventory.getStackInSlot(OUTPUT_SLOT).getDamageValue() - energytomove);
+        this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().putInt("Energies", this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("Energies") - energytomove);
+        if(energytomove <= this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("Energies")) {
+            if (nextE >= 16) {
+                energytomove++;
+                nextE = 0;
+            }else {
+                nextE++;
+            }
+            Endcraft.LOGGER.info(String.valueOf(energytomove));
+        }else {
+            energytomove = this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("Energies");
+
+        }
+    }
+    public String getEnergytomove4() {
+        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getMaxDamage() != 0) {
+            DecimalFormat df = new DecimalFormat("#.##");
+            float f = (float) (2048 - this.inventory.getStackInSlot(OUTPUT_SLOT).getDamageValue()) / this.inventory.getStackInSlot(OUTPUT_SLOT).getMaxDamage() * 100;
+            return (df.format(f).replace(",", "."));
+        }
+        return "";
     }
 
-    private ItemStack getTool() {
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_SWORD) {
-            return ModItems.ENDERITE_SWORD.get().getDefaultInstance();
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_PICKAXE) {
-            return ModItems.ENDERITE_PICKAXE.get().getDefaultInstance();
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_AXE) {
-            return ModItems.ENDERITE_AXE.get().getDefaultInstance();
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_SHOVEL) {
-            return ModItems.ENDERITE_SHOVEL.get().getDefaultInstance();
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_HOE) {
-            return ModItems.ENDERITE_HOE.get().getDefaultInstance();
-        }
-        return null;
-    }
 
-    private boolean hasProgressFinished() {
-        return progress >= maxProgress;
-    }
-
-    private void increaseProgress() {
-        progress++;
-    }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.ENDERITE_INGOT.get();
-
-        return hasCraftingItem && hasToolInOutputSlot();
+        return (this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.ENERGY_CELL.get()  && this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("Energies") > 0 && this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == ModItems.ENDER_STAFF.get() && this.inventory.getStackInSlot(OUTPUT_SLOT).getDamageValue() > 0);
     }
 
-    private boolean hasToolInOutputSlot() {
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_SWORD) {
-            return true;
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_PICKAXE) {
-            return true;
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_AXE) {
-            return true;
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_SHOVEL) {
-            return true;
-        }
-        if (this.inventory.getStackInSlot(OUTPUT_SLOT).getItem() == Items.NETHERITE_HOE) {
-            return true;
-        }
-        return false;
-    }
-
-    public int getProgress() {
-        return progress;
-    }
 }

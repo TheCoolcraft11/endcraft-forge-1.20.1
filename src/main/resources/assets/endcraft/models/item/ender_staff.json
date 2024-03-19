@@ -1,6 +1,18 @@
 {
-	"parent": "minecraft:item/generated",
-	"textures": {
-		"layer0": "endcraft:item/ender_staff"
-	}
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "endcraft:item/ender_staff_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "endcraft:item/ender_staff_2d"
+    },
+    "ground": {
+      "parent": "endcraft:item/ender_staff_2d"
+    },
+    "fixed": {
+      "parent": "endcraft:item/ender_staff_2d"
+    }
+  }
 }

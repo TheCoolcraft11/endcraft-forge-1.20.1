@@ -24,6 +24,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.ENDERITE_AXE);
         handheldItem(ModItems.ENDERITE_SHOVEL);
         handheldItem(ModItems.ENDERITE_HOE);
+        simpleItem(ModItems.SHADOW_VEIL);
+        simpleItem(ModItems.ENDERITE_SCRAP);
+        simpleItem(ModItems.ESSENCE_CORE);
+        simpleItem(ModItems.ENDERITE_CORE);
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

@@ -3,7 +3,9 @@ package net.thecoolcraft11.endcraft;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -14,11 +16,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.items.ItemStackHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
+import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.item.ModCreativeModTabs;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
+import net.thecoolcraft11.endcraft.screen.EnderChargerMenu;
+import net.thecoolcraft11.endcraft.screen.EnderChargerScreen;
 import net.thecoolcraft11.endcraft.screen.EnderForgeConverterScreen;
 import net.thecoolcraft11.endcraft.screen.ModMenuTypes;
 import org.slf4j.Logger;
@@ -41,6 +47,7 @@ public class Endcraft {
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModEnchantments.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -68,6 +75,7 @@ public class Endcraft {
 
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENDER_FORGE_CONVERTER.get(), RenderType.cutout());
             MenuScreens.register(ModMenuTypes.ENDER_FORGE_CONVERTER_MENU.get(), EnderForgeConverterScreen::new);
+            MenuScreens.register(ModMenuTypes.ENDER_CHARGER_MENU.get(), EnderChargerScreen::new);
         }
     }
 }

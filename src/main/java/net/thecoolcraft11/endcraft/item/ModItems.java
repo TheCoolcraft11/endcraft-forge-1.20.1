@@ -45,11 +45,11 @@ public class ModItems {
             () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ENDERITE_CORE = ITEMS.register("enderite_core",
             () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> ENDERITE_ENERGY = ITEMS.register("enderite_engery",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ENDERITE_ENERGY = ITEMS.register("enderite_energy",
+            () -> new Item(new Item.Properties().stacksTo(128)));
     public static final RegistryObject<Item> ENDER_STAFF = ITEMS.register("ender_staff",
             () -> new EnderStaffItem(new Item.Properties().stacksTo(1).durability(2048)));
-    public static final RegistryObject<Item> ENERGY_CELL = ITEMS.register("enderite_cell",
+    public static final RegistryObject<Item> ENERGY_CELL = ITEMS.register("energy_cell",
             () -> new EnergyCellItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SHADOW_VEIL = ITEMS.register("shadow_veil",
             () -> new ShadowVeilItem(new Item.Properties().stacksTo(1)));

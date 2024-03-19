@@ -6,8 +6,12 @@ import net.minecraft.network.chat.OutgoingChatMessage;
 import net.minecraft.network.chat.PlayerChatMessage;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.network.NetworkEvent;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.item.custom.EnderStaffItem;
 import net.thecoolcraft11.endcraft.util.Raycast;
 
@@ -29,10 +33,10 @@ public class EnderStaffTeleportationC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel world = player.serverLevel().getLevel();
-
             double reachDistance = 64;
-            if(EnderStaffItem.hasNbtUpgrade(player.getMainHandItem(), "range")) {
-                reachDistance = 64 + 10 * EnderStaffItem.getNbtLevel(player.getMainHandItem(), "range");
+            if(EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RANGE_ENCHANTMENT.get(), player.getMainHandItem()) != 0) {
+                reachDistance = 64 + 10 * player.getMainHandItem().getEnchantmentLevel(ModEnchantments.RANGE_ENCHANTMENT.get());
+
             }
             if (!(player.getMainHandItem().getDamageValue() >= player.getMainHandItem().getMaxDamage())) {
 
@@ -42,16 +46,16 @@ public class EnderStaffTeleportationC2SPacket {
                         Raycast.raycastFromPlayer(player, world, reachDistance).getZ() + 0.5,
                         player.getYRot(),
                         player.getXRot());
-                System.out.println(reachDistance);
-                player.sendSystemMessage(Component.literal("ReachDistance: " + reachDistance));
 
-                if (EnderStaffItem.hasNbtUpgrade(player.getMainHandItem(), "durability")) {
-                    player.getMainHandItem().setDamageValue((int) (player.getMainHandItem().getDamageValue() + 5 / EnderStaffItem.getNbtLevel(player.getMainHandItem(), "durability")));
-                } else {
-                    player.getMainHandItem().setDamageValue(player.getMainHandItem().getDamageValue() + 5);
-                }
-                if (EnderStaffItem.hasNbtUpgrade(player.getMainHandItem(), "fall")) {
-                    player.fallDistance = (float) (player.fallDistance - EnderStaffItem.getNbtLevel(player.getMainHandItem(), "fall") * 10);
+                    player.getMainHandItem().setDamageValue (player.getMainHandItem().getDamageValue() + 25 - EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.DURABILITY_ENCHANTMENT.get(), player.getMainHandItem()) * 2);
+
+                if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FALL_ENCHANTMENT.get(), player.getMainHandItem()) != 0) {
+                    if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FALL_ENCHANTMENT.get(), player.getMainHandItem()) == 4) {
+                        player.fallDistance = -1;
+                    }
+                    else {
+                        player.fallDistance = (float) (player.fallDistance - EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FALL_ENCHANTMENT.get(), player.getMainHandItem()) * 10);
+                    }
                 }
             }
         });
