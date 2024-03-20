@@ -13,6 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.block.custom.EnderChargerBlock;
 import net.thecoolcraft11.endcraft.block.custom.EnderForgeConverterBlock;
+import net.thecoolcraft11.endcraft.block.custom.EssenceAltarBlock;
 import net.thecoolcraft11.endcraft.item.ModItems;
 
 import java.util.function.Supplier;
@@ -28,6 +29,10 @@ public class ModBlocks {
             () -> new EnderForgeConverterBlock(BlockBehaviour.Properties.copy(Blocks.REINFORCED_DEEPSLATE).noOcclusion()));
     public static final RegistryObject<Block> ENDER_CHARGER_BLOCK = registerBlock("ender_charger",
             () -> new EnderChargerBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).noOcclusion()));
+    public static final RegistryObject<Block> ESSENCE_ALTAR = registerBlock("essence_altar",
+            () -> new EssenceAltarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).noOcclusion()));
+    public static final RegistryObject<Block> ENDERITE_BLOCK = registerBlock("enderite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

@@ -23,10 +23,7 @@ import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.item.ModCreativeModTabs;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
-import net.thecoolcraft11.endcraft.screen.EnderChargerMenu;
-import net.thecoolcraft11.endcraft.screen.EnderChargerScreen;
-import net.thecoolcraft11.endcraft.screen.EnderForgeConverterScreen;
-import net.thecoolcraft11.endcraft.screen.ModMenuTypes;
+import net.thecoolcraft11.endcraft.screen.*;
 import org.slf4j.Logger;
 
 
@@ -76,6 +73,7 @@ public class Endcraft {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENDER_FORGE_CONVERTER.get(), RenderType.cutout());
             MenuScreens.register(ModMenuTypes.ENDER_FORGE_CONVERTER_MENU.get(), EnderForgeConverterScreen::new);
             MenuScreens.register(ModMenuTypes.ENDER_CHARGER_MENU.get(), EnderChargerScreen::new);
+            MenuScreens.register(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), EssenceAltarScreen::new);
         }
     }
 }

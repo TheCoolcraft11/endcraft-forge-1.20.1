@@ -92,7 +92,7 @@ public class EnderChargerBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.endcraft.ender_forge_converter");
+        return Component.translatable("block.endcraft.ender_charger");
     }
 
     @Nullable
