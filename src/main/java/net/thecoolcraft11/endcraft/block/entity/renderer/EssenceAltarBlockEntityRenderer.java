@@ -30,7 +30,7 @@ public class EssenceAltarBlockEntityRenderer implements BlockEntityRenderer<Esse
         poseStack.translate(0.5f, essenceAltarBlockEntity.getScale() * 1.5,0.5f);
         poseStack.scale(essenceAltarBlockEntity.getScale() * 2.75f, essenceAltarBlockEntity.getScale() * 2.75f, essenceAltarBlockEntity.getScale() * 2.75f);
 
-        itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(essenceAltarBlockEntity.getLevel(), essenceAltarBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, essenceAltarBlockEntity.getLevel(), 1);
+        itemRenderer.renderStatic(itemStack, ItemDisplayContext.HEAD, getLightLevel(essenceAltarBlockEntity.getLevel(), essenceAltarBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, essenceAltarBlockEntity.getLevel(), 1);
         poseStack.popPose();
     }
     private int getLightLevel(Level level, BlockPos pos) {
