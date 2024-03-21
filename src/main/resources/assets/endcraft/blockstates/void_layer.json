@@ -22,7 +22,7 @@
       "model": "endcraft:block/void_height14"
     },
     "layers=8": {
-      "model": "endcraft:block/void_fluid"
+      "model": "endcraft:block/void_block"
     }
   }
 }

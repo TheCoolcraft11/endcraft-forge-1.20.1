@@ -14,6 +14,7 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<EnderForgeConverterBlockEntity>> ENDER_FORGE_BE = BLOCK_ENTITIES.register("ender_forge_be",() ->BlockEntityType.Builder.of(EnderForgeConverterBlockEntity::new, ModBlocks.ENDER_FORGE_CONVERTER.get()).build(null));
     public static final RegistryObject<BlockEntityType<EnderChargerBlockEntity>> ENDER_CHARGER_BE = BLOCK_ENTITIES.register("ender_charger_be",() ->BlockEntityType.Builder.of(EnderChargerBlockEntity::new, ModBlocks.ENDER_CHARGER_BLOCK.get()).build(null));
     public static final RegistryObject<BlockEntityType<EssenceAltarBlockEntity>> ESSENCE_ALTAR_BE = BLOCK_ENTITIES.register("essence_altar_be",() ->BlockEntityType.Builder.of(EssenceAltarBlockEntity::new, ModBlocks.ESSENCE_ALTAR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<EndPedastelBlockEntity>> END_PEDASTEL_BE = BLOCK_ENTITIES.register("end_pedastel_be",() ->BlockEntityType.Builder.of(EndPedastelBlockEntity::new, ModBlocks.END_PEDASTEL.get()).build(null));
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

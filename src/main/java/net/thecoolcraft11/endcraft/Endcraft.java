@@ -24,6 +24,7 @@ import net.thecoolcraft11.endcraft.item.ModCreativeModTabs;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
 import net.thecoolcraft11.endcraft.screen.*;
+import net.thecoolcraft11.endcraft.statuseffect.ModStatusEffects;
 import org.slf4j.Logger;
 
 
@@ -45,6 +46,7 @@ public class Endcraft {
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModEnchantments.register(modEventBus);
+        ModStatusEffects.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

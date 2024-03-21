@@ -5,6 +5,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -34,8 +38,19 @@ import net.thecoolcraft11.endcraft.screen.EssenceAltarMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EssenceAltarBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler inventory = new ItemStackHandler(18);
+    private final ItemStackHandler inventory = new ItemStackHandler(18){
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if(!level.isClientSide) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
     private static final int INPUT_SLOT = 16;
     private static final int OUTPUT_SLOT = 17;
     private static final int CRAFT_SLOT1 = 0;
@@ -99,7 +114,15 @@ public class EssenceAltarBlockEntity extends BlockEntity implements MenuProvider
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> inventory);
     }
-
+    public ItemStack getRenderStack() {
+        return this.inventory.getStackInSlot(OUTPUT_SLOT);
+    }
+    public float getScale() {
+        if (this.inventory.getStackInSlot(INPUT_SLOT).getCount() >= 1) {
+            return this.inventory.getStackInSlot(INPUT_SLOT).getCount() * 2;
+        }
+        return 8;
+    }
     public void drops() {
         SimpleContainer simpleContainer = new SimpleContainer(inventory.getSlots());
         for(int i = 0; i < inventory.getSlots(); i++) {
@@ -186,8 +209,7 @@ public class EssenceAltarBlockEntity extends BlockEntity implements MenuProvider
         this.inventory.getStackInSlot(CRAFT_SLOT16).setCount(0);
         this.inventory.getStackInSlot(INPUT_SLOT).setCount(0);
         removeBlocksAroundPoint(this.level,this.worldPosition,destroyamount);
-        //damagePlayer(this.getWorld(),findNearestPlayerInArea(this.getWorld(),this.getPos(),destroyamount), destroyamount);
-        //Damage missing!
+        damagePlayer(this.level,findNearestPlayerInArea(this.level,this.getBlockPos(),destroyamount), destroyamount);
 
 
         this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().putInt("MaxDurability", this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().getInt("MaxDurability") + destroyamount);
@@ -284,5 +306,53 @@ public class EssenceAltarBlockEntity extends BlockEntity implements MenuProvider
         }
         return istrue;
     }
+    private static List<Player> findNearestPlayerInArea(Level world, BlockPos centerPos, int radius) {
+        List<Player> PlayersInArea = new ArrayList<>();
+        double nearestDistanceSquared = Double.POSITIVE_INFINITY;
 
+        int minX = centerPos.getX() - radius;
+        int minY = centerPos.getY() - radius;
+        int minZ = centerPos.getZ() - radius;
+
+        int maxX = centerPos.getX() + radius;
+        int maxY = centerPos.getY() + radius;
+        int maxZ = centerPos.getZ() + radius;
+
+        double maxDistanceSquared = radius * radius;
+
+        for (Player player : world.players()) {
+            BlockPos playerPos = player.getOnPos();
+
+            // Überprüfe, ob der Spieler innerhalb des Bereichs liegt
+            if (playerPos.getX() >= minX && playerPos.getX() <= maxX &&
+                    playerPos.getY() >= minY && playerPos.getY() <= maxY &&
+                    playerPos.getZ() >= minZ && playerPos.getZ() <= maxZ) {
+                if(player instanceof Player) {
+                    PlayersInArea.add(player);
+                }
+            }
+        }
+        return PlayersInArea;
+    }
+    private void damagePlayer(Level world, List<Player> players, int damage) {
+
+        if(players != null) {
+            for(Player player : players) {
+
+
+
+                player.hurt(ModDamageTypes.of(world, ModDamageTypes.ESSENCE_AREA_REMOVED), damage);
+            }
+        }
+    }
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithFullMetadata();
+    }
 }

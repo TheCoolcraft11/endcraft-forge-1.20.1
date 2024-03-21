@@ -1,4 +1,6 @@
-// 1.20.1	2024-03-19T16:36:07.2106721	Loot Tables
+// 1.20.1	2024-03-21T16:33:12.9343811	Loot Tables
+45aa1624eddb80779a2d148fe6bb56681806bc04 data/endcraft/loot_tables/blocks/enderite_block.json
 543fbfd7eef85522cf72401b51bd1731e0d55426 data/endcraft/loot_tables/blocks/enderite_ore.json
 4407b801edf039a7a6d4d85a89c5211e8f679933 data/endcraft/loot_tables/blocks/ender_charger.json
 9ea6df6a95b77200bed8c4143e1d116287fe222d data/endcraft/loot_tables/blocks/ender_forge_converter.json
+822f8f691fd3585577765c5238208b4a3d33ab57 data/endcraft/loot_tables/blocks/essence_altar.json

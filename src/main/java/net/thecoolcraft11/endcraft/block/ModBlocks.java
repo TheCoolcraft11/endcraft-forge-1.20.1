@@ -11,9 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
-import net.thecoolcraft11.endcraft.block.custom.EnderChargerBlock;
-import net.thecoolcraft11.endcraft.block.custom.EnderForgeConverterBlock;
-import net.thecoolcraft11.endcraft.block.custom.EssenceAltarBlock;
+import net.thecoolcraft11.endcraft.block.custom.*;
 import net.thecoolcraft11.endcraft.item.ModItems;
 
 import java.util.function.Supplier;
@@ -33,6 +31,12 @@ public class ModBlocks {
             () -> new EssenceAltarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).noOcclusion()));
     public static final RegistryObject<Block> ENDERITE_BLOCK = registerBlock("enderite_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> VOID_BLOCK = registerBlock("void_block",
+            () -> new VoidBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable().noCollission()));
+    public static final RegistryObject<Block> VOID_LAYER = registerBlock("void_layer",
+            () -> new VoidLayerBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable().noCollission()));
+    public static final RegistryObject<Block> END_PEDASTEL = registerBlock("end_pedastel",
+            () -> new EndPedastelBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

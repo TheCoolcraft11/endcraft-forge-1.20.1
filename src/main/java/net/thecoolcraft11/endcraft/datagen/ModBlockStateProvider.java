@@ -21,6 +21,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("block/ender_forge_converter")));
         simpleBlockWithItem(ModBlocks.ENDER_CHARGER_BLOCK.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/ender_charger")));
+        simpleBlockWithItem(ModBlocks.ESSENCE_ALTAR.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/essence_altar")));
+        blockWithItem(ModBlocks.ENDERITE_BLOCK);
+        blockWithItem(ModBlocks.VOID_BLOCK);
     }
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));

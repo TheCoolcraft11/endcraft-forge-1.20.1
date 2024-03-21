@@ -21,6 +21,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ENDERITE_ORE.get());
         this.dropSelf(ModBlocks.ENDER_FORGE_CONVERTER.get());
         this.dropSelf(ModBlocks.ENDER_CHARGER_BLOCK.get());
+        this.dropSelf(ModBlocks.ENDERITE_BLOCK.get());
+        this.dropSelf(ModBlocks.ESSENCE_ALTAR.get());
     }
 
     @Override

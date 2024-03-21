@@ -1,7 +1,7 @@
 {
     "textures": {
         "particle": "endcraft:block/void_fluid",
-        "texture": "endcraft:block/void_fluid"
+        "texture": "endcraft:block/void_block"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],
