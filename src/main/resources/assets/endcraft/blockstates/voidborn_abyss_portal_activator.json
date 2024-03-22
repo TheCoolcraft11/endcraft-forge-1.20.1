@@ -2,16 +2,15 @@
   "multipart": [
     {
       "when": {
-        "half": "1",
-        "on": "true"
+        "half": "lower"
       },
       "apply": {
-        "model": "endcraft:block/voidborn_portal_activator_upper_on"
+        "model": "endcraft:block/voidborn_portal_activator_lower"
       }
     },
     {
       "when": {
-        "half": "1",
+        "half": "upper",
         "on": "false"
       },
       "apply": {
@@ -20,10 +19,11 @@
     },
     {
       "when": {
-        "half": "0"
+        "half": "upper",
+        "on": "true"
       },
       "apply": {
-        "model": "endcraft:block/voidborn_portal_activator_lower"
+        "model": "endcraft:block/voidborn_portal_activator_upper_on"
       }
     }
   ]

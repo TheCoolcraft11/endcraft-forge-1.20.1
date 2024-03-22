@@ -2,9 +2,7 @@ package net.thecoolcraft11.endcraft.block;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,17 +24,27 @@ public class ModBlocks {
     public static final RegistryObject<Block> ENDER_FORGE_CONVERTER = registerBlock("ender_forge_converter",
             () -> new EnderForgeConverterBlock(BlockBehaviour.Properties.copy(Blocks.REINFORCED_DEEPSLATE).noOcclusion()));
     public static final RegistryObject<Block> ENDER_CHARGER_BLOCK = registerBlock("ender_charger",
-            () -> new EnderChargerBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).noOcclusion()));
+            () -> new EnderChargerBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ESSENCE_ALTAR = registerBlock("essence_altar",
             () -> new EssenceAltarBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).noOcclusion()));
     public static final RegistryObject<Block> ENDERITE_BLOCK = registerBlock("enderite_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion()));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));
     public static final RegistryObject<Block> VOID_BLOCK = registerBlock("void_block",
-            () -> new VoidBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable().noCollission()));
+            () -> new VoidBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).noLootTable().noCollission()));
     public static final RegistryObject<Block> VOID_LAYER = registerBlock("void_layer",
-            () -> new VoidLayerBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable().noCollission()));
+            () -> new VoidLayerBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).noLootTable().noCollission()));
     public static final RegistryObject<Block> END_PEDASTEL = registerBlock("end_pedastel",
-            () -> new EndPedastelBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noOcclusion().noLootTable()));
+            () -> new EndPedastelBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).noLootTable()));
+    public static final RegistryObject<Block> INFECTED_GRASS = registerBlock("infected_grass",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));
+    public static final RegistryObject<Block> INFECTED_STONE = registerBlock("infected_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));
+    public static final RegistryObject<Block> INFECTED_DIRT = registerBlock("infected_dirt",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));
+    public static final RegistryObject<Block> VOIDBORN_ABYSS_PORTAL = registerBlock("voidborn_abyss_portal",
+            () -> new VoidbornAbyssPortal(BlockBehaviour.Properties.copy(Blocks.END_PORTAL).noOcclusion().noCollission().noLootTable()));
+    public static final RegistryObject<Block> VOIDBORN_ABYSS_PORTAL_ACTIVATOR = registerBlock("voidborn_abyss_portal_activator",
+            () -> new VoidbornAbyssPortalActivator(BlockBehaviour.Properties.copy(Blocks.BEDROCK).noLootTable()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

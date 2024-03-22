@@ -2,8 +2,10 @@ package net.thecoolcraft11.endcraft.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -42,5 +44,15 @@ public class VoidLayerBlock extends SnowLayerBlock {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         pEntity.hurt(ModDamageTypes.of(pEntity.level(), ModDamageTypes.SWAM_VOID), 4f);
         super.entityInside(pState, pLevel, pPos, pEntity);
+    }
+
+    @Override
+    public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {
+        return false;
+    }
+
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return true;
     }
 }

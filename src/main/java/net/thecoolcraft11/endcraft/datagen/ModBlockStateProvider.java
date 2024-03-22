@@ -25,6 +25,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("block/essence_altar")));
         blockWithItem(ModBlocks.ENDERITE_BLOCK);
         blockWithItem(ModBlocks.VOID_BLOCK);
+        blockWithItem(ModBlocks.INFECTED_DIRT);
+        blockWithItem(ModBlocks.INFECTED_STONE);
+        simpleBlockWithItem(ModBlocks.INFECTED_GRASS.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/infected_grass")));
     }
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));

@@ -1,9 +1,7 @@
 package net.thecoolcraft11.endcraft.datagen.loot;
 
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
@@ -23,6 +21,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ENDER_CHARGER_BLOCK.get());
         this.dropSelf(ModBlocks.ENDERITE_BLOCK.get());
         this.dropSelf(ModBlocks.ESSENCE_ALTAR.get());
+        this.dropSelf(ModBlocks.INFECTED_DIRT.get());
+        this.dropSelf(ModBlocks.INFECTED_GRASS.get());
+        this.dropSelf(ModBlocks.INFECTED_STONE.get());
     }
 
     @Override

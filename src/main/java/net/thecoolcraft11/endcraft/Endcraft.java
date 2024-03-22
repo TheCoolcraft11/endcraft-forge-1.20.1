@@ -73,6 +73,7 @@ public class Endcraft {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENDER_FORGE_CONVERTER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ESSENCE_ALTAR.get(), RenderType.cutout());
             MenuScreens.register(ModMenuTypes.ENDER_FORGE_CONVERTER_MENU.get(), EnderForgeConverterScreen::new);
             MenuScreens.register(ModMenuTypes.ENDER_CHARGER_MENU.get(), EnderChargerScreen::new);
             MenuScreens.register(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), EssenceAltarScreen::new);
