@@ -3,7 +3,6 @@ package net.thecoolcraft11.endcraft.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -11,6 +10,8 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -19,8 +20,14 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.block.ModBlocks;
+import net.thecoolcraft11.endcraft.block.custom.EndPedastelBlock;
+import net.thecoolcraft11.endcraft.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class EndPedastelBlockEntity extends BlockEntity {
@@ -65,6 +72,7 @@ public class EndPedastelBlockEntity extends BlockEntity {
         return super.getCapability(cap, side);
     }
 
+
     @Override
     public void onLoad() {
         super.onLoad();
@@ -73,8 +81,8 @@ public class EndPedastelBlockEntity extends BlockEntity {
     public ItemStack getRenderStack() {
         return this.inventory.getStackInSlot(INPUT_SLOT);
     }
-    int rot = 0;
-    public int getRenderRot(int speed) {
+    float rot = 0;
+    public float getRenderRot(float speed) {
         if(this.rot >= 360) {
             this.rot = 0;
         }
@@ -82,14 +90,37 @@ public class EndPedastelBlockEntity extends BlockEntity {
         return this.rot;
     }
     float ry = 0;
-    public float getRenderY(float speed) {
-        if(this.ry >= 0.75f) {
-            this.ry = this.ry - speed;
-        }else {
-            this.ry = this.ry+ speed;
+    int direction = 1;
+    public float getRenderY(float speed, float maxHeight, float minHeight) {
+        if(this.ry >= maxHeight) {
+            this.direction = -1;
+        }else if (this.ry <= minHeight){
+            this.direction = 1;
         }
+        this.ry += speed * this.direction;
         return this.ry;
     }
+    public boolean getRightItemsForType(int type, ItemStack itemStack) {
+        Map< Integer,ItemStack> integerItemStackHashMap = new HashMap<>();
+        integerItemStackHashMap.put(0, Items.AIR.getDefaultInstance());
+        integerItemStackHashMap.put(1, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(2, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(3, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(4, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(5, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(6, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(7, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+        integerItemStackHashMap.put(8, ModItems.ENDERITE_PICKAXE.get().getDefaultInstance());
+
+        if(integerItemStackHashMap.get(type) == null) {
+            return false;
+        }
+        return integerItemStackHashMap.get(type).getItem() == itemStack.getItem();
+    }
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        pLevel.setBlock(pPos, pState.setValue(EndPedastelBlock.RIGHT_ITEM, getRightItemsForType(pState.getValue(EndPedastelBlock.TYPE), this.inventory.getStackInSlot(0).getItem().getDefaultInstance())), 3);
+    }
+
 
     public void drops() {
         SimpleContainer simpleContainer = new SimpleContainer(inventory.getSlots());
@@ -129,4 +160,5 @@ public class EndPedastelBlockEntity extends BlockEntity {
     public CompoundTag getUpdateTag() {
         return saveWithFullMetadata();
     }
+
 }

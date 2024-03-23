@@ -1,31 +1,166 @@
 {
-"variants": {
-  "type=0": {
-    "model": "endcraft:block/end_pedastel"
-  },
-  "type=1": {
-    "model": "endcraft:block/end_pedastel_darkness"
-  },
-  "type=2": {
-    "model": "endcraft:block/end_pedastel_eye"
-  },
-  "type=3": {
-    "model": "endcraft:block/end_pedastel_flame"
-  },
-  "type=4": {
-    "model": "endcraft:block/end_pedastel_fog"
-  },
-  "type=5": {
-    "model": "endcraft:block/end_pedastel_knowlage"
-  },
-  "type=6": {
-    "model": "endcraft:block/end_pedastel_mythic"
-  },
-  "type=7": {
-    "model": "endcraft:block/end_pedastel_path"
-  },
-  "type=8": {
-    "model": "endcraft:block/end_pedastel_tear"
-  }
-}
+  "multipart": [
+    {
+      "when": {
+        "type": "0",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel"
+      }
+    },
+    {
+      "when": {
+        "type": "1",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_darkness"
+      }
+    },
+    {
+      "when": {
+        "type": "2",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_eye"
+      }
+    },
+    {
+      "when": {
+        "type": "3",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_flame"
+      }
+    },
+    {
+      "when": {
+        "type": "4",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_fog"
+      }
+    },
+    {
+      "when": {
+        "type": "5",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_knowlage"
+      }
+    },
+    {
+      "when": {
+        "type": "6",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_mythic"
+      }
+    },
+    {
+      "when": {
+        "type": "7",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_path"
+      }
+    },
+    {
+      "when": {
+        "type": "8",
+        "right_item": "false"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_tear"
+      }
+    },
+    {
+      "when": {
+        "type": "0",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_on"
+      }
+    },
+    {
+      "when": {
+        "type": "1",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_darkness_on"
+      }
+    },
+    {
+      "when": {
+        "type": "2",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_eye_on"
+      }
+    },
+    {
+      "when": {
+        "type": "3",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_flame_on"
+      }
+    },
+    {
+      "when": {
+        "type": "4",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_fog_on"
+      }
+    },
+    {
+      "when": {
+        "type": "5",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_knowlage_on"
+      }
+    },
+    {
+      "when": {
+        "type": "6",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_mythic_on"
+      }
+    },
+    {
+      "when": {
+        "type": "7",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_path_on"
+      }
+    },
+    {
+      "when": {
+        "type": "8",
+        "right_item": "true"
+      },
+      "apply": {
+        "model": "endcraft:block/end_pedastel_tear_on"
+      }
+    }
+  ]
 }

@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.block.entity.EndPedastelBlockEntity;
 import net.thecoolcraft11.endcraft.item.ModItems;
 
@@ -28,9 +29,9 @@ public class EndPedastelBlockEntityRenderer implements BlockEntityRenderer<EndPe
         ItemStack itemStack = endPedastelBlockEntity.getRenderStack();
 
         poseStack.pushPose();
-        poseStack.translate(0.5f, 1.25f, 0.5f);
+        poseStack.translate(0.5f, 1.25f + endPedastelBlockEntity.getRenderY(0.005f, 0.2f, 0.0f), 0.5f);
         poseStack.scale(0.5f, 0.5f, 0.5f);
-        poseStack.mulPose(Axis.YP.rotationDegrees(endPedastelBlockEntity.getRenderRot(2)));
+        poseStack.mulPose(Axis.YP.rotationDegrees(endPedastelBlockEntity.getRenderRot(1.5f)));
 
         itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(endPedastelBlockEntity.getLevel(), endPedastelBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, endPedastelBlockEntity.getLevel(), 1);
         poseStack.popPose();

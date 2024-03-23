@@ -65,7 +65,14 @@ public class VoidBlock extends Block {
         }
 
     }
-
+    @Override
+    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+        if(pLevel.getBlockState(pPos.below(1)).getBlock() == Blocks.AIR) {
+            pLevel.setBlock(pPos.below(1), pState, 3);
+            pLevel.setBlock(pPos, Blocks.AIR.defaultBlockState(), 3);
+        }
+        super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
+    }
 
     private void spread(Level world, BlockPos centerPos, int radius, int chance, boolean spreadair) {
         int halfRadius = radius / 2;

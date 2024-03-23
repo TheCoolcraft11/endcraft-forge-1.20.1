@@ -28,6 +28,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ENDERITE_SCRAP);
         simpleItem(ModItems.ESSENCE_CORE);
         simpleItem(ModItems.ENDERITE_CORE);
+        withExistingParent(ModItems.VOID_GHOST_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

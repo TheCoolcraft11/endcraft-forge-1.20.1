@@ -1,4 +1,4 @@
-package net.thecoolcraft11.endcraft.block;
+package net.thecoolcraft11.endcraft.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -69,7 +69,7 @@ public class VoidbornAbyssPortal extends Block {
             }
         }else {
             Vec3 lookDirection = entity.getLookAngle().scale(-1.0);
-            entity.push(lookDirection.x * 1, 1.0f, lookDirection.z * 1);
+            entity.push(lookDirection.x * 2, 2.5f, lookDirection.z * 2);
         }
         super.entityInside(pState, pLevel, pPos, entity);
     }

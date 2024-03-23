@@ -1,12 +1,15 @@
 package net.thecoolcraft11.endcraft.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -51,8 +54,13 @@ public class VoidLayerBlock extends SnowLayerBlock {
         return false;
     }
 
+
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return true;
+    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+        if(pLevel.getBlockState(pPos.below(1)).getBlock() == Blocks.AIR) {
+            pLevel.setBlock(pPos.below(1), pState, 3);
+            pLevel.setBlock(pPos, Blocks.AIR.defaultBlockState(), 3);
+        }
+        super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
     }
 }

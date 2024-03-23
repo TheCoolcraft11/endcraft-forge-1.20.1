@@ -31,15 +31,6 @@ public class EmptyEssenceItem extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, level, entity, slot, selected);
-        entity.noCulling = true;
-        entity.noPhysics = true;
-        ((Player) entity).getAbilities().mayBuild = false;
-        ((Player) entity).getAbilities().mayfly = true;
-        ((Player) entity).getAbilities().instabuild = true;
-        ((Player) entity).getAbilities().invulnerable = true;
-        ((Player) entity).attackAnim = 0.8f;
-        ((Player) entity).horizontalCollision = false;
-        ((Player) entity).verticalCollision = false;
         if (isInVoid((Player) entity)) {
             stack.getOrCreateTag().putInt("MaxDurability", stack.getOrCreateTag().getInt("MaxDurability") + 1);
             stack.getOrCreateTag().putString("essence", "the_void");

@@ -1,11 +1,13 @@
 package net.thecoolcraft11.endcraft.item;
 
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.entity.ModEntities;
 import net.thecoolcraft11.endcraft.item.custom.EmptyEssenceItem;
 import net.thecoolcraft11.endcraft.item.custom.EnderStaffItem;
 import net.thecoolcraft11.endcraft.item.custom.EnergyCellItem;
@@ -53,6 +55,8 @@ public class ModItems {
             () -> new EnergyCellItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SHADOW_VEIL = ITEMS.register("shadow_veil",
             () -> new ShadowVeilItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> VOID_GHOST_SPAWN_EGG = ITEMS.register("void_ghost_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.VOID_GHOST, 0x000000, 0xFFFFFF, new Item.Properties()));
 
 
 

@@ -5,6 +5,8 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,9 +22,12 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
 import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
+import net.thecoolcraft11.endcraft.entity.ModEntities;
+import net.thecoolcraft11.endcraft.entity.client.VoidGhostRenderer;
 import net.thecoolcraft11.endcraft.item.ModCreativeModTabs;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
+import net.thecoolcraft11.endcraft.particle.ModParticles;
 import net.thecoolcraft11.endcraft.screen.*;
 import net.thecoolcraft11.endcraft.statuseffect.ModStatusEffects;
 import org.slf4j.Logger;
@@ -47,6 +52,8 @@ public class Endcraft {
         ModMenuTypes.register(modEventBus);
         ModEnchantments.register(modEventBus);
         ModStatusEffects.register(modEventBus);
+        ModParticles.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -77,6 +84,7 @@ public class Endcraft {
             MenuScreens.register(ModMenuTypes.ENDER_FORGE_CONVERTER_MENU.get(), EnderForgeConverterScreen::new);
             MenuScreens.register(ModMenuTypes.ENDER_CHARGER_MENU.get(), EnderChargerScreen::new);
             MenuScreens.register(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), EssenceAltarScreen::new);
+            EntityRenderers.register(ModEntities.VOID_GHOST.get(), VoidGhostRenderer::new);
         }
     }
 }

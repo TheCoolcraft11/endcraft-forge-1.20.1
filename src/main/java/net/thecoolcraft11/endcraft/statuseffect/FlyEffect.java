@@ -15,12 +15,10 @@ public class FlyEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
             if (pLivingEntity instanceof Player) {
                 if(shouldHaveFlyingEffect(((Player) pLivingEntity))) {
-                    Endcraft.LOGGER.info("T1");
                     ((Player) pLivingEntity).getAbilities().mayfly = true;
                     ((Player) pLivingEntity).getAbilities().setFlyingSpeed(0.1f * (pAmplifier + 1));
                 }else {
                     if (!(((Player) pLivingEntity).isCreative() || pLivingEntity.isSpectator())) {
-                        Endcraft.LOGGER.info("T2");
                         ((Player) pLivingEntity).getAbilities().flying = false;
                         ((Player) pLivingEntity).getAbilities().mayfly = false;
                     }
