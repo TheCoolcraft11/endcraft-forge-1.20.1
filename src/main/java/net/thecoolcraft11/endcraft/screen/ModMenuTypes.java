@@ -20,6 +20,8 @@ public class ModMenuTypes {
             registerMenuType("ender_charger_menu", EnderChargerMenu::new);
     public static final RegistryObject<MenuType<EssenceAltarMenu>> ESSENCE_ALTAR_MENU =
             registerMenuType("essence_altar_menu", EssenceAltarMenu::new);
+    public static final RegistryObject<MenuType<ModTableMenu>> MOD_TABLE_MENU =
+            registerMenuType("mod_table_menu", ModTableMenu::new);
 
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

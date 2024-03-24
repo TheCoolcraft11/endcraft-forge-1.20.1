@@ -29,6 +29,35 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ESSENCE_CORE);
         simpleItem(ModItems.ENDERITE_CORE);
         withExistingParent(ModItems.VOID_GHOST_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_1);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_2);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_3);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_4);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_5);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_6);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_7);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_8);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_9);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_10);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_11);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_12);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_13);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_14);
+        simpleItem(ModItems.ENDER_UPGRADE_RANGE_15);
+        simpleItem(ModItems.ENDER_UPGRADE_FALL_1);
+        simpleItem(ModItems.ENDER_UPGRADE_FALL_2);
+        simpleItem(ModItems.ENDER_UPGRADE_FALL_3);
+        simpleItem(ModItems.ENDER_UPGRADE_FALL_4);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_1);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_2);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_3);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_4);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_5);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_6);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_7);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_8);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_9);
+        simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_10);
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

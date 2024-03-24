@@ -19,6 +19,7 @@ public class ModTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> IS_STAFF_UPGRADE = tag("is_staff_upgrade");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(Endcraft.MOD_ID, name));

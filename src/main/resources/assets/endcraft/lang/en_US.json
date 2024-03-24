@@ -24,11 +24,15 @@
   "item.endcraft.enchanted_saddle": "Enchanted Saddle",
   "item.endcraft.enderite_chest_key": "Enderite Chest Key",
 
+  "item.endcraft.ender_upgrade": "Ender Upgrade",
+
   "enchantment.endcraft.range" : "Range ",
   "enchantment.endcraft.durability" : "Durability ",
   "enchantment.endcraft.fall" : "Fall ",
 
-  "creativetab.endcraft": "Endcraft: Beyond the Void",
+  "creativetab.endcraft_items": "Endcraft: Beyond the Void - Items",
+  "creativetab.endcraft_blocks": "Endcraft: Beyond the Void - Blocks",
+  "creativetab.endcraft_upgrades": "Endcraft: Beyond the Void - Upgrades",
 
 
   "block.endcraft.enderite_ore" : "Enderite Ore",
@@ -41,21 +45,18 @@
   "block.endcraft.infected_dirt" : "Infected Dirt",
   "block.endcraft.infected_stone" : "Infected Stone",
   "block.endcraft.infected_grass" : "Infected Grass",
-  "block.endcraft.void_fluid" : "Void Fluid",
+  "block.endcraft.void_block" : "Void Fluid",
   "block.endcraft.void_layer" : "Void Layer",
   "block.endcraft.end_pedastel" : "End Pedastel",
   "block.endcraft.voidborn_abyss_portal" : "Voidborn Abyss Portal",
+  "block.endcraft.mod_table" : "Mod Table",
   "block.endcraft.enderite_chest" : "Enderite Chest",
+
+
 
 
   "death.attack.essence.removed_area" : "%1$s was in a colibating area",
   "death.attack.player.swam_void" : "%1$s was caught by the Void",
-
-
-  "endcraft.gui.ender_forge_converter_name": "Ender Forge Converter",
-  "endcraft.gui.essence_altar" : "Essence Altar",
-  "endcraft.gui.ender_charger" : "Ender Charger",
-  "endcraft.gui.mod_table" : "Mod Table",
 
   "effect.endcraft.fly": "Fly",
   "effect.endcraft.void": "Curse of the Void",

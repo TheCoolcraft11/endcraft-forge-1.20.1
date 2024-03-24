@@ -29,6 +29,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.INFECTED_STONE);
         simpleBlockWithItem(ModBlocks.INFECTED_GRASS.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/infected_grass")));
+        simpleBlockWithItem(ModBlocks.MOD_TABLE_BLOCK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/mod_table")));
     }
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));

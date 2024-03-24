@@ -7,11 +7,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.entity.ModEntities;
-import net.thecoolcraft11.endcraft.item.custom.EmptyEssenceItem;
-import net.thecoolcraft11.endcraft.item.custom.EnderStaffItem;
-import net.thecoolcraft11.endcraft.item.custom.EnergyCellItem;
-import net.thecoolcraft11.endcraft.item.custom.ShadowVeilItem;
+import net.thecoolcraft11.endcraft.item.custom.*;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -48,7 +46,7 @@ public class ModItems {
     public static final RegistryObject<Item> ENDERITE_CORE = ITEMS.register("enderite_core",
             () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ENDERITE_ENERGY = ITEMS.register("enderite_energy",
-            () -> new Item(new Item.Properties().stacksTo(128)));
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENDER_STAFF = ITEMS.register("ender_staff",
             () -> new EnderStaffItem(new Item.Properties().stacksTo(1).durability(2048)));
     public static final RegistryObject<Item> ENERGY_CELL = ITEMS.register("energy_cell",
@@ -57,6 +55,67 @@ public class ModItems {
             () -> new ShadowVeilItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> VOID_GHOST_SPAWN_EGG = ITEMS.register("void_ghost_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.VOID_GHOST, 0x000000, 0xFFFFFF, new Item.Properties()));
+
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_1 = ITEMS.register("ender_upgrade_range_1",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 1));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_2 = ITEMS.register("ender_upgrade_range_2",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 2));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_3 = ITEMS.register("ender_upgrade_range_3",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 3));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_4 = ITEMS.register("ender_upgrade_range_4",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 4));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_5 = ITEMS.register("ender_upgrade_range_5",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 5));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_6 = ITEMS.register("ender_upgrade_range_6",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 6));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_7 = ITEMS.register("ender_upgrade_range_7",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 7));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_8 = ITEMS.register("ender_upgrade_range_8",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 8));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_9 = ITEMS.register("ender_upgrade_range_9",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 9));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_10 = ITEMS.register("ender_upgrade_range_10",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 10));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_11 = ITEMS.register("ender_upgrade_range_11",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 11));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_12 = ITEMS.register("ender_upgrade_range_12",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 12));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_13 = ITEMS.register("ender_upgrade_range_13",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 13));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_14 = ITEMS.register("ender_upgrade_range_14",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 14));
+        public static final RegistryObject<Item> ENDER_UPGRADE_RANGE_15 = ITEMS.register("ender_upgrade_range_15",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "range", 15));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_1 = ITEMS.register("ender_upgrade_durability_1",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 1));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_2 = ITEMS.register("ender_upgrade_durability_2",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 2));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_3 = ITEMS.register("ender_upgrade_durability_3",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 3));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_4 = ITEMS.register("ender_upgrade_durability_4",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 4));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_5 = ITEMS.register("ender_upgrade_durability_5",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 5));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_6 = ITEMS.register("ender_upgrade_durability_6",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 6));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_7 = ITEMS.register("ender_upgrade_durability_7",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 7));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_8 = ITEMS.register("ender_upgrade_durability_8",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 8));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_9 = ITEMS.register("ender_upgrade_durability_9",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 9));
+        public static final RegistryObject<Item> ENDER_UPGRADE_DURABILITY_10 = ITEMS.register("ender_upgrade_durability_10",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "durability", 10));
+
+        public static final RegistryObject<Item> ENDER_UPGRADE_FALL_1 = ITEMS.register("ender_upgrade_fall_1",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 1));
+        public static final RegistryObject<Item> ENDER_UPGRADE_FALL_2 = ITEMS.register("ender_upgrade_fall_2",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 2));
+        public static final RegistryObject<Item> ENDER_UPGRADE_FALL_3 = ITEMS.register("ender_upgrade_fall_3",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 3));
+        public static final RegistryObject<Item> ENDER_UPGRADE_FALL_4 = ITEMS.register("ender_upgrade_fall_4",
+                () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 4));
+
 
 
 

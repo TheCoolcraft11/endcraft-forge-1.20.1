@@ -29,8 +29,8 @@ public class ShadowVeilEffect extends MobEffect {
                     ((Player) pEntity).getAbilities().mayBuild = false;
                     ((Player) pEntity).getAbilities().invulnerable = true;
                     ((Player) pEntity).getAbilities().setFlyingSpeed(0.15f);
-                    MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 1, 255, false, false, false);
-                    MobEffectInstance mobEffectInstance2 = new MobEffectInstance(MobEffects.WEAKNESS, 1, 255, false, false, false);
+                    MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 10, 255, false, false, false);
+                    MobEffectInstance mobEffectInstance2 = new MobEffectInstance(MobEffects.WEAKNESS, 10, 255, false, false, false);
                     ((Player) pEntity).addEffect(mobEffectInstance);
                     ((Player) pEntity).addEffect(mobEffectInstance2);
                 }else {

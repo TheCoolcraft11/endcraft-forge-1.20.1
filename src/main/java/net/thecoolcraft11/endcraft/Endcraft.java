@@ -44,13 +44,14 @@ public class Endcraft {
 
         ModCreativeModTabs.register(modEventBus);
 
-        ModItems.register(modEventBus);
 
         ModBlocks.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModEnchantments.register(modEventBus);
+        ModItems.register(modEventBus);
+
         ModStatusEffects.register(modEventBus);
         ModParticles.register(modEventBus);
         ModEntities.register(modEventBus);
@@ -84,6 +85,7 @@ public class Endcraft {
             MenuScreens.register(ModMenuTypes.ENDER_FORGE_CONVERTER_MENU.get(), EnderForgeConverterScreen::new);
             MenuScreens.register(ModMenuTypes.ENDER_CHARGER_MENU.get(), EnderChargerScreen::new);
             MenuScreens.register(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), EssenceAltarScreen::new);
+            MenuScreens.register(ModMenuTypes.MOD_TABLE_MENU.get(), ModTableScreen::new);
             EntityRenderers.register(ModEntities.VOID_GHOST.get(), VoidGhostRenderer::new);
         }
     }

@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-23T23:02:54.6987718	Block States: endcraft
+// 1.20.1	2024-03-24T14:06:27.8644378	Block States: endcraft
 36be2a6b5f8d1d7d844b64931ad52e9ca04fd175 assets/endcraft/blockstates/enderite_block.json
 2eb41102ad18670619af4b8bb64fa09ef2328355 assets/endcraft/blockstates/enderite_ore.json
 3d2b4aa6160031817fc075b1e172b9d4c2dc2f63 assets/endcraft/blockstates/ender_charger.json
@@ -7,6 +7,7 @@
 e3c13b6ed14832431e322929b3897ff80f77380d assets/endcraft/blockstates/infected_dirt.json
 4725c1a844ba41c94581d3a8810fb682571bb11d assets/endcraft/blockstates/infected_grass.json
 c50352333e918c9c39a895c28233ecde9304464d assets/endcraft/blockstates/infected_stone.json
+a52e58dd02b419a45fc7f19612df7cfc59eaceab assets/endcraft/blockstates/mod_table.json
 d9732fe61fd9e0c82161c25254264ff4e6c253fa assets/endcraft/blockstates/void_block.json
 021e2a6d1f121df9b52caa7c644ee6cf4bd65d0d assets/endcraft/models/block/enderite_block.json
 7c1accdb10c0f042b8c0e07051e49cab33bda27b assets/endcraft/models/block/enderite_ore.json
@@ -21,4 +22,5 @@ cab4d9d77f1ab249d11910ca90496c5612b4e7b8 assets/endcraft/models/item/ender_forge
 a3a9d8612fc63a0d474332645d2ccb4c6f4cbd92 assets/endcraft/models/item/infected_dirt.json
 5b048484bdbfa96ae873ef360947118331f17d07 assets/endcraft/models/item/infected_grass.json
 3f2f69a0af6ada296413fc48466a7d59b1cf73d2 assets/endcraft/models/item/infected_stone.json
+65e7620a72289476964ad3a5f1583a3834d3b477 assets/endcraft/models/item/mod_table.json
 0155f1637644c6a6b12349db91bfb729749b6dde assets/endcraft/models/item/void_block.json
