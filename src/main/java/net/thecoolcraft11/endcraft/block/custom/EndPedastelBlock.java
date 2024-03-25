@@ -3,10 +3,7 @@ package net.thecoolcraft11.endcraft.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -24,14 +21,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.thecoolcraft11.endcraft.block.entity.EndPedastelBlockEntity;
-import net.thecoolcraft11.endcraft.block.entity.EnderForgeConverterBlockEntity;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
-import net.thecoolcraft11.endcraft.item.ModItems;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EndPedastelBlock extends BaseEntityBlock {
     private final static VoxelShape SHAPE = Block.box(2,0,2,14,12,14);

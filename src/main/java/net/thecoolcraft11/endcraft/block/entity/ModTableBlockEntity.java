@@ -20,7 +20,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.screen.ModTableMenu;
@@ -61,6 +60,9 @@ public class ModTableBlockEntity extends BlockEntity implements MenuProvider {
         };
     }
 
+    public ItemStack getRenderStack() {
+        return this.inventory.getStackInSlot(OUTPUT_SLOT);
+    }
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == ForgeCapabilities.ITEM_HANDLER) {
@@ -121,7 +123,6 @@ public class ModTableBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
-    int nextE = 0;
     private void craftItem() {
         if (this.inventory.getStackInSlot(INPUT_SLOT_U).getOrCreateTag().getString("type").equals("range")) {
             if(this.inventory.getStackInSlot(OUTPUT_SLOT).getEnchantmentLevel(ModEnchantments.RANGE_ENCHANTMENT.get()) < 15) {

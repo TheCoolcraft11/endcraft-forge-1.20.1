@@ -38,7 +38,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.ENERGY_CELL.get());
                         pOutput.accept(ModItems.ENDER_STAFF.get());
                         pOutput.accept(ModItems.VOID_GHOST_SPAWN_EGG.get());
-                    //    pOutput.accept(ModItems.OCULUS_ORE);
+                        pOutput.accept(ModItems.OCULUS_ORE.get());
                     //    pOutput.accept(ModItems.ENCHANTED_SADDLE);
                         pOutput.accept(ModItems.SHADOW_VEIL.get());
                     //    pOutput.accept(ModItems.STAFF_OF_TELEPORTATION);
@@ -61,7 +61,6 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.VOID_BLOCK.get());
                         pOutput.accept(ModBlocks.VOID_LAYER.get());
                         pOutput.accept(ModBlocks.END_PEDASTEL.get());
-                    //    pOutput.accept(ModItems.OCULUS_ORE);
                     //    pOutput.accept(ModItems.ENCHANTED_SADDLE);
                     //    pOutput.accept(ModItems.STAFF_OF_TELEPORTATION);
                     //    pOutput.accept(ModBlocks.ENDER_CHEST);

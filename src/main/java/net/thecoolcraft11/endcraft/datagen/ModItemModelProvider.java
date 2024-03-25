@@ -58,6 +58,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_8);
         simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_9);
         simpleItem(ModItems.ENDER_UPGRADE_DURABILITY_10);
+        simpleItem(ModItems.OCULUS_ORE);
     }
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

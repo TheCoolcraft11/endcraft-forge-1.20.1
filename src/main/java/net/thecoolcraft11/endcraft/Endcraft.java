@@ -3,11 +3,9 @@ package net.thecoolcraft11.endcraft;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.items.ItemStackHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
 import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
@@ -87,6 +84,8 @@ public class Endcraft {
             MenuScreens.register(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), EssenceAltarScreen::new);
             MenuScreens.register(ModMenuTypes.MOD_TABLE_MENU.get(), ModTableScreen::new);
             EntityRenderers.register(ModEntities.VOID_GHOST.get(), VoidGhostRenderer::new);
+            EntityRenderers.register(ModEntities.OCULUS_ORE_PROJECTILE.get(), ThrownItemRenderer::new);
+            MenuScreens.register(ModMenuTypes.OCULUS_COMBINER_MENU.get(), OculusCombinerScreen::new);
         }
     }
 }

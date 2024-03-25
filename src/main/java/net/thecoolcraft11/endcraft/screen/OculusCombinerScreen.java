@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.thecoolcraft11.endcraft.Endcraft;
 
-public class ModTableScreen extends AbstractContainerScreen<ModTableMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Endcraft.MOD_ID, "textures/gui/mod_table.png");
-    public ModTableScreen(ModTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+public class OculusCombinerScreen extends AbstractContainerScreen<OculusCombinerMenu> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Endcraft.MOD_ID, "textures/gui/oculus_combiner_gui.png");
+    public OculusCombinerScreen(OculusCombinerMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 
@@ -31,8 +31,15 @@ public class ModTableScreen extends AbstractContainerScreen<ModTableMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+
+        renderProgressArrow(guiGraphics, x, y);
     }
 
+    private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
+        if(menu.isCrafting()) {
+            guiGraphics.blit(TEXTURE, x + 44, y + 22, 177, 4, menu.getScaledProgress(), 7);
+        }
+    }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {

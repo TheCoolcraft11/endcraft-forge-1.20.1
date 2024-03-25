@@ -10,21 +10,21 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
-import net.thecoolcraft11.endcraft.block.entity.ModTableBlockEntity;
+import net.thecoolcraft11.endcraft.block.entity.OculusCombinerBlockEntity;
 
-public class ModTableMenu extends AbstractContainerMenu {
-    public final ModTableBlockEntity blockEntity;
+public class OculusCombinerMenu extends AbstractContainerMenu {
+    public final OculusCombinerBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public ModTableMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
+    public OculusCombinerMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
-    public ModTableMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.MOD_TABLE_MENU.get(), pContainderId);
-        checkContainerSize(inventory, 4);
-        blockEntity = ((ModTableBlockEntity) entity);
+    public OculusCombinerMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.OCULUS_COMBINER_MENU.get(), pContainderId);
+        checkContainerSize(inventory, 3);
+        blockEntity = ((OculusCombinerBlockEntity) entity);
         this.level = inventory.player.level();
         this.data = data;
 
@@ -32,17 +32,26 @@ public class ModTableMenu extends AbstractContainerMenu {
         addPlayerHotbar(inventory);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 8, 48));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 26, 48));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 44, 48));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 98, 48));
-
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 8, 17));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 26, 17));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 98, 17));
         });
 
         addDataSlots(data);
     }
 
 
+    public boolean isCrafting() {
+        return data.get(0) > 0;
+    }
+
+    public int getScaledProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);
+        int progressArrowSize = 52;
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -60,7 +69,7 @@ public class ModTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -95,7 +104,7 @@ public class ModTableMenu extends AbstractContainerMenu {
     }
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.MOD_TABLE_BLOCK.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.OCULUS_COMBINER.get());
     }
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {

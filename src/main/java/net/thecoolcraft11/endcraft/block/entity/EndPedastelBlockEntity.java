@@ -19,8 +19,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.thecoolcraft11.endcraft.Endcraft;
-import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.custom.EndPedastelBlock;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import org.jetbrains.annotations.NotNull;

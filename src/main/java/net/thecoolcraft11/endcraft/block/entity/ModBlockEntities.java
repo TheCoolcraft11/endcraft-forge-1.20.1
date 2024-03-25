@@ -16,6 +16,7 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<EssenceAltarBlockEntity>> ESSENCE_ALTAR_BE = BLOCK_ENTITIES.register("essence_altar_be",() ->BlockEntityType.Builder.of(EssenceAltarBlockEntity::new, ModBlocks.ESSENCE_ALTAR.get()).build(null));
     public static final RegistryObject<BlockEntityType<EndPedastelBlockEntity>> END_PEDASTEL_BE = BLOCK_ENTITIES.register("end_pedastel_be",() ->BlockEntityType.Builder.of(EndPedastelBlockEntity::new, ModBlocks.END_PEDASTEL.get()).build(null));
     public static final RegistryObject<BlockEntityType<ModTableBlockEntity>> MOD_TABLE_BE = BLOCK_ENTITIES.register("mod_table_be",() ->BlockEntityType.Builder.of(ModTableBlockEntity::new, ModBlocks.MOD_TABLE_BLOCK.get()).build(null));
+    public static final RegistryObject<BlockEntityType<OculusCombinerBlockEntity>> OCULUS_COMBINER = BLOCK_ENTITIES.register("oculus_combiner_be",() ->BlockEntityType.Builder.of(OculusCombinerBlockEntity::new, ModBlocks.OCULUS_COMBINER.get()).build(null));
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

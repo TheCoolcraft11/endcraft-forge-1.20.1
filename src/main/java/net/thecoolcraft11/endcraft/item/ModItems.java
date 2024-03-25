@@ -115,6 +115,8 @@ public class ModItems {
                 () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 3));
         public static final RegistryObject<Item> ENDER_UPGRADE_FALL_4 = ITEMS.register("ender_upgrade_fall_4",
                 () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 4));
+        public static final RegistryObject<Item> OCULUS_ORE = ITEMS.register("oculus_ore",
+                () -> new OculusOreItem(new Item.Properties().durability(1)));
 
 
 

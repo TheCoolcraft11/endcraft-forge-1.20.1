@@ -2,7 +2,6 @@ package net.thecoolcraft11.endcraft.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -11,7 +10,6 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

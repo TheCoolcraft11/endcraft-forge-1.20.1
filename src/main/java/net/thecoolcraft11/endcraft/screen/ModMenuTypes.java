@@ -22,6 +22,8 @@ public class ModMenuTypes {
             registerMenuType("essence_altar_menu", EssenceAltarMenu::new);
     public static final RegistryObject<MenuType<ModTableMenu>> MOD_TABLE_MENU =
             registerMenuType("mod_table_menu", ModTableMenu::new);
+    public static final RegistryObject<MenuType<OculusCombinerMenu>> OCULUS_COMBINER_MENU =
+            registerMenuType("oculus_combiner_menu", OculusCombinerMenu::new);
 
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

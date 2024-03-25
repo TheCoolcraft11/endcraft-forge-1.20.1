@@ -47,6 +47,8 @@ public class ModBlocks {
             () -> new VoidbornAbyssPortalActivator(BlockBehaviour.Properties.copy(Blocks.BEDROCK).noLootTable()));
     public static final RegistryObject<Block> MOD_TABLE_BLOCK = registerBlock("mod_table",
             () -> new ModTableBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
+    public static final RegistryObject<Block> OCULUS_COMBINER = registerBlock("oculus_combiner",
+            () -> new OculusCombinerBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

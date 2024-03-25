@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-24T13:30:37.2971681	Item Models: endcraft
+// 1.20.1	2024-03-25T16:39:05.8913716	Item Models: endcraft
 4ad6705b5e2eb063a5abd28c690802a58990622a assets/endcraft/models/item/enderite_axe.json
 aefeb34fda137c1c3893414a2b2beed84c7b405a assets/endcraft/models/item/enderite_core.json
 4d963f8d9fb8b64d381372400433a18f21f78582 assets/endcraft/models/item/enderite_hoe.json
@@ -37,5 +37,6 @@ e0f4c7b2da5aa8c888913ed3589fd20ea78d8eb4 assets/endcraft/models/item/ender_upgra
 f3212b12811366ebaace831bb678a1d3f7d0bc28 assets/endcraft/models/item/ender_upgrade_range_8.json
 50aa5f88b9be4d013913049ed6c65333c3aaa003 assets/endcraft/models/item/ender_upgrade_range_9.json
 3e3b75839fbfd547833cd1d68f044575ad115f50 assets/endcraft/models/item/essence_core.json
+0f44b707f21c596a22cce2a1a3466c5b2fc0bb89 assets/endcraft/models/item/oculus_ore.json
 ff4a0a6fec73c288493d8c147c575e5db976c68e assets/endcraft/models/item/shadow_veil.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/endcraft/models/item/void_ghost_spawn_egg.json

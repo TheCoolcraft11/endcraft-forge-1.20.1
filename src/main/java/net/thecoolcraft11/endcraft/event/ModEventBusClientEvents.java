@@ -9,6 +9,7 @@ import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
 import net.thecoolcraft11.endcraft.block.entity.renderer.EndPedastelBlockEntityRenderer;
 import net.thecoolcraft11.endcraft.block.entity.renderer.EnderForgeConverterBlockEntityRenderer;
 import net.thecoolcraft11.endcraft.block.entity.renderer.EssenceAltarBlockEntityRenderer;
+import net.thecoolcraft11.endcraft.block.entity.renderer.ModTableBlockEntityRenderer;
 import net.thecoolcraft11.endcraft.entity.client.ModModelLayers;
 import net.thecoolcraft11.endcraft.entity.client.VoidGhostModel;
 
@@ -20,6 +21,7 @@ public class ModEventBusClientEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.ENDER_FORGE_BE.get(), EnderForgeConverterBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.END_PEDASTEL_BE.get(), EndPedastelBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.ESSENCE_ALTAR_BE.get(), EssenceAltarBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.MOD_TABLE_BE.get(), ModTableBlockEntityRenderer::new);
     }
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {

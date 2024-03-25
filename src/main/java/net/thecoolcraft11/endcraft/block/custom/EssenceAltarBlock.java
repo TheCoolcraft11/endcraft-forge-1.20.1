@@ -1,11 +1,9 @@
 package net.thecoolcraft11.endcraft.block.custom;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -18,7 +16,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import net.thecoolcraft11.endcraft.block.entity.EssenceAltarBlockEntity;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
-import net.thecoolcraft11.endcraft.damagetypes.ModDamageTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class EssenceAltarBlock extends BaseEntityBlock {
