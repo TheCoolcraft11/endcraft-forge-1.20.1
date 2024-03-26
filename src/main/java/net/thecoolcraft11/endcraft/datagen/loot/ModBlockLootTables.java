@@ -25,6 +25,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.INFECTED_GRASS.get());
         this.dropSelf(ModBlocks.INFECTED_STONE.get());
         this.dropSelf(ModBlocks.MOD_TABLE_BLOCK.get());
+        this.dropSelf(ModBlocks.OCULUS_COMBINER.get());
     }
 
     @Override

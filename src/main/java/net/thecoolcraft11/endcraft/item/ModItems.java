@@ -117,6 +117,14 @@ public class ModItems {
                 () -> new EnderUpgrade(new Item.Properties().stacksTo(1), "fall", 4));
         public static final RegistryObject<Item> OCULUS_ORE = ITEMS.register("oculus_ore",
                 () -> new OculusOreItem(new Item.Properties().durability(1)));
+        public static final RegistryObject<Item> ENDERITE_HELMET = ITEMS.register("enderite_helmet",
+                () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.HELMET, new Item.Properties()));
+        public static final RegistryObject<Item> ENDERITE_CHESTPLATE = ITEMS.register("enderite_chestplate",
+                () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+        public static final RegistryObject<Item> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings",
+                () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+        public static final RegistryObject<Item> ENDERITE_BOOTS = ITEMS.register("enderite_boots",
+                () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 
 

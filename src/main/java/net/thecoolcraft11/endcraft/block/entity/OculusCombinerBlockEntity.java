@@ -26,7 +26,9 @@ import net.thecoolcraft11.endcraft.screen.OculusCombinerMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.text.DecimalFormat;
+import java.util.Random;
 
 public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(3);
@@ -34,7 +36,7 @@ public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvid
     private static final int INPUT_SLOT1 = 1;
     private static final int OUTPUT_SLOT = 2;
     private int progress = 0;
-    private int maxProgress = (this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("maxDamage") + this.inventory.getStackInSlot(INPUT_SLOT1).getOrCreateTag().getInt("maxDamage"));
+    private int maxProgress = 0;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     protected final ContainerData data;
@@ -119,17 +121,22 @@ public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvid
         progress = pTag.getInt("progress");
 
     }
-
+    int currentprogress;
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()) {
-
+            setMaxProgress();
             increaseProgress();
             setChanged(pLevel, pPos, pState);
             if(isOutputSlotEmpty() && isProgressFinshed()) {
                 craftItem();
                 resetProgess();
+                currentprogress = 0;
             }
         }
+    }
+
+    private void setMaxProgress() {
+        maxProgress = this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("maxDamage") + this.inventory.getStackInSlot(INPUT_SLOT1).getOrCreateTag().getInt("maxDamage");
     }
 
     private void resetProgess() {
@@ -142,7 +149,7 @@ public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvid
 
     private void increaseProgress() {
         progress++;
-    }
+            }
 
     private void craftItem() {
         int newMaxDamage;
@@ -158,7 +165,9 @@ public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvid
     private boolean isOutputSlotEmpty() {
         return this.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty();
     }
-
+    public int getNextMaxDamage() {
+        return this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("maxDamage") + this.inventory.getStackInSlot(INPUT_SLOT1).getOrCreateTag().getInt("maxDamage");
+    }
     private boolean hasRecipe() {
         return (this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.OCULUS_ORE.get() && this.inventory.getStackInSlot(INPUT_SLOT1).getItem() == ModItems.OCULUS_ORE.get() && this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("damage") == 0 && this.inventory.getStackInSlot(INPUT_SLOT1).getOrCreateTag().getInt("damage") == 0 && this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getInt("maxDamage") == this.inventory.getStackInSlot(INPUT_SLOT1).getOrCreateTag().getInt("maxDamage"));
     }

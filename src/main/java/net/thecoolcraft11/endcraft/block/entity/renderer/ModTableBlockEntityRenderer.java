@@ -28,10 +28,10 @@ public class ModTableBlockEntityRenderer implements BlockEntityRenderer<ModTable
 
         poseStack.pushPose();
         poseStack.translate(0.5f, 1.2f, 0.5f);
-        poseStack.scale(0.35f, 0.35f, 0.35f);
+        poseStack.scale(0.5f, 0.5f, 0.5f);
         poseStack.mulPose(Axis.XP.rotationDegrees(270));
 
-        itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, getLightLevel(modTableBlockEntity.getLevel(), modTableBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, modTableBlockEntity.getLevel(), 1);
+        itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, getLightLevel(modTableBlockEntity.getLevel(), modTableBlockEntity.getBlockPos().above()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, modTableBlockEntity.getLevel(), 1);
         poseStack.popPose();
     }
     private int getLightLevel(Level level, BlockPos pos) {

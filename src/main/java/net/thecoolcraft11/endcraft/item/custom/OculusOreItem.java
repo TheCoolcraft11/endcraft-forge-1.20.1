@@ -1,6 +1,7 @@
 package net.thecoolcraft11.endcraft.item.custom;
 
 import com.google.common.collect.Multimap;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -41,24 +42,8 @@ public class OculusOreItem extends Item {
             pPlayer.getMainHandItem().getOrCreateTag().putBoolean("hasEntity", true);
             return InteractionResult.SUCCESS;
         }
+
         return super.interactLivingEntity(pStack, pPlayer, pInteractionTarget, pUsedHand);
-    }
-
-    @Override
-    public InteractionResult useOn(UseOnContext pContext) {
-        if (pContext.getItemInHand().getOrCreateTag().getBoolean("hasEntity")) {
-            EntityType<?> entity = EntityType.byString(pContext.getItemInHand().getOrCreateTag().getString("entity")).orElse(null);
-            if(!(entity == null)) {
-                damage(pContext.getPlayer().getMainHandItem(), 1);
-                if(pContext.getLevel().getServer() != null) {
-                    entity.spawn(Objects.requireNonNull(pContext.getLevel().getServer().getLevel(pContext.getLevel().dimension())), pContext.getClickedPos(), MobSpawnType.SPAWN_EGG);
-                }else if(Minecraft.getInstance().getSingleplayerServer() != null) {
-                    entity.spawn(Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer().getLevel(pContext.getLevel().dimension())), pContext.getClickedPos().above(1), MobSpawnType.SPAWN_EGG);
-                }
-            }
-
-        }
-        return super.useOn(pContext);
     }
 
     @Override
@@ -102,11 +87,11 @@ public class OculusOreItem extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         EntityType<?> entity = EntityType.byString(pStack.getOrCreateTag().getString("entity")).orElse(null);
         if (entity != null) {
-            pTooltipComponents.add(Component.translatable(entity.toString().replace(":", ".")));
+            pTooltipComponents.add(Component.translatable(entity.toString().replace(":", ".")).withStyle(ChatFormatting.AQUA));
         }else {
-            pTooltipComponents.add(Component.literal(""));
+            pTooltipComponents.add(Component.translatable("gui.none").withStyle(ChatFormatting.RED));
         }
-        pTooltipComponents.add(Component.translatable("item.endcraft.usedleft").append(" ").append(String.valueOf(pStack.getOrCreateTag().getInt("maxDamage") - pStack.getOrCreateTag().getInt("damage"))).append("/").append(String.valueOf(pStack.getOrCreateTag().getInt("maxDamage"))));
+        pTooltipComponents.add(Component.translatable("tooltip.endcraft.usesleft").append(" ").append(String.valueOf(pStack.getOrCreateTag().getInt("maxDamage") - pStack.getOrCreateTag().getInt("damage"))).append("/").append(String.valueOf(pStack.getOrCreateTag().getInt("maxDamage"))).withStyle(ChatFormatting.DARK_GREEN));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 

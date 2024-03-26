@@ -23,6 +23,12 @@
   "item.endcraft.energy": "Phantasma Prism",
   "item.endcraft.enchanted_saddle": "Enchanted Saddle",
   "item.endcraft.enderite_chest_key": "Enderite Chest Key",
+  "item.endcraft.enderite_helmet": "Enderite Helmet",
+  "item.endcraft.enderite_chestplate": "Enderite Chestplate",
+  "item.endcraft.enderite_leggings": "Enderite Leggings",
+  "item.endcraft.enderite_boots": "Enderite Boots",
+
+  "tooltip.endcraft.usesleft" : "Uses Left:",
 
   "item.endcraft.ender_upgrade": "Ender Upgrade",
 
@@ -51,7 +57,6 @@
   "block.endcraft.voidborn_abyss_portal" : "Voidborn Abyss Portal",
   "block.endcraft.mod_table" : "Mod Table",
   "block.endcraft.enderite_chest" : "Enderite Chest",
-
 
 
 

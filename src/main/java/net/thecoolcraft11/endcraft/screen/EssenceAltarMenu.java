@@ -49,8 +49,7 @@ public class EssenceAltarMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 14, 44, 61));
             this.addSlot(new SlotItemHandler(iItemHandler, 15, 62, 61));
             this.addSlot(new SlotItemHandler(iItemHandler, 16, 116, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 17, 116, 61));
-
+            this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 17, 116, 61));
         });
 
         addDataSlots(data);

@@ -38,6 +38,7 @@ public class OculusCombinerScreen extends AbstractContainerScreen<OculusCombiner
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 44, y + 22, 177, 4, menu.getScaledProgress(), 7);
+            guiGraphics.drawString(Minecraft.getInstance().font, String.valueOf(menu.blockEntity.getNextMaxDamage()),  x + 115, y + 33, 0xFFFFF);
         }
     }
 

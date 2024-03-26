@@ -26,6 +26,10 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.ENDERITE_AXE.get());
                         pOutput.accept(ModItems.ENDERITE_SHOVEL.get());
                         pOutput.accept(ModItems.ENDERITE_HOE.get());
+                        pOutput.accept(ModItems.ENDERITE_HELMET.get());
+                        pOutput.accept(ModItems.ENDERITE_CHESTPLATE.get());
+                        pOutput.accept(ModItems.ENDERITE_LEGGINGS.get());
+                        pOutput.accept(ModItems.ENDERITE_BOOTS.get());
                         pOutput.accept(ModItems.ENDERITE_INGOT.get());
                         pOutput.accept(ModItems.EMPTY_ESSENCE.get());
                         pOutput.accept(ModItems.VOID_ESSENCE.get());
@@ -43,6 +47,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.SHADOW_VEIL.get());
                     //    pOutput.accept(ModItems.STAFF_OF_TELEPORTATION);
                     //    pOutput.accept(ModItems.ENDERITE_CHEST_KEY);
+
                     })
                     .build());
     public static final RegistryObject<CreativeModeTab> ENDCRAFT_TAB_BLOCKS = CREATIVE_MODE_TABS.register("endcraft_blocks",

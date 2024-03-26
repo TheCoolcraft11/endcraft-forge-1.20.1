@@ -3,8 +3,10 @@ package net.thecoolcraft11.endcraft.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.common.Mod;
 import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.util.ModTags;
@@ -51,5 +53,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ENDER_UPGRADE_FALL_2.get())
                 .add(ModItems.ENDER_UPGRADE_FALL_3.get())
                 .add(ModItems.ENDER_UPGRADE_FALL_4.get());
+        this.tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.ENDERITE_HELMET.get())
+                .add(ModItems.ENDERITE_CHESTPLATE.get())
+                .add(ModItems.ENDERITE_LEGGINGS.get())
+                .add(ModItems.ENDERITE_BOOTS.get());
     }
 }
