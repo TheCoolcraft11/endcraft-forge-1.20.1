@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-26T21:06:22.2772392	Item Models: endcraft
+// 1.20.1	2024-03-27T20:41:12.160864	Item Models: endcraft
 4ad6705b5e2eb063a5abd28c690802a58990622a assets/endcraft/models/item/enderite_axe.json
 98755c6cfc3878b1fd0efd1c3f4033c82659d67a assets/endcraft/models/item/enderite_boots.json
 835f9d1e26d2f6eee76011651ac5abbcd5ce37d7 assets/endcraft/models/item/enderite_boots_amethyst_trim.json
@@ -22,6 +22,7 @@ d76eb7f28805118e662de38e079b67a5e248a637 assets/endcraft/models/item/enderite_ch
 aabcb2431bc51bc4ceead339631108ad9267e789 assets/endcraft/models/item/enderite_chestplate_netherite_trim.json
 51157a561f3f9478dfb0874e1768afd1f406c9bd assets/endcraft/models/item/enderite_chestplate_quartz_trim.json
 2f7a11e73c9f0ac6769d79435871fd5353a162c9 assets/endcraft/models/item/enderite_chestplate_redstone_trim.json
+f6a0aa1e65808080d925b4e7d53b76d6b63cc2e0 assets/endcraft/models/item/enderite_chest_key.json
 aefeb34fda137c1c3893414a2b2beed84c7b405a assets/endcraft/models/item/enderite_core.json
 2aeca35a526e73f083c296f160324fb3a481d6e6 assets/endcraft/models/item/enderite_helmet.json
 106df5829cc6dd5b33be31d8d9f8235bdd8b0886 assets/endcraft/models/item/enderite_helmet_amethyst_trim.json

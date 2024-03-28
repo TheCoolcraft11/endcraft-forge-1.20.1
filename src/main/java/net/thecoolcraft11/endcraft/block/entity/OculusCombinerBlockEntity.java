@@ -26,10 +26,6 @@ import net.thecoolcraft11.endcraft.screen.OculusCombinerMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-import java.text.DecimalFormat;
-import java.util.Random;
-
 public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler inventory = new ItemStackHandler(3);
     private static final int INPUT_SLOT = 0;
@@ -42,7 +38,7 @@ public class OculusCombinerBlockEntity extends BlockEntity implements MenuProvid
     protected final ContainerData data;
 
     public OculusCombinerBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.OCULUS_COMBINER.get(), pPos, pBlockState);
+        super(ModBlockEntities.OCULUS_COMBINER_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {

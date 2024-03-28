@@ -120,11 +120,15 @@ public class ModItems {
         public static final RegistryObject<Item> ENDERITE_HELMET = ITEMS.register("enderite_helmet",
                 () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.HELMET, new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_CHESTPLATE = ITEMS.register("enderite_chestplate",
-                () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+                () -> new ModArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_LEGGINGS = ITEMS.register("enderite_leggings",
                 () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_BOOTS = ITEMS.register("enderite_boots",
                 () -> new ArmorItem(ModArmorMaterials.ENDERITE, ArmorItem.Type.BOOTS, new Item.Properties()));
+        public static final RegistryObject<Item> PHANTASMA_PRISM_ITEM = ITEMS.register("phantasma_prism",
+                () -> new PhantasmaPrismItem(new Item.Properties()));
+        public static final RegistryObject<Item> ENDERITE_CHEST_KEY = ITEMS.register("enderite_chest_key",
+                () -> new EnderiteChestKey(new Item.Properties()));
 
 
 

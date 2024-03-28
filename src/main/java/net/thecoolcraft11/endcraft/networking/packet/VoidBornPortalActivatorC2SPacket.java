@@ -16,12 +16,15 @@ import net.thecoolcraft11.endcraft.util.Raycast;
 import java.util.function.Supplier;
 
 public class VoidBornPortalActivatorC2SPacket {
-    public VoidBornPortalActivatorC2SPacket() {
+    BlockPos pos;
+    public VoidBornPortalActivatorC2SPacket(BlockPos blockPos) {
+        this.pos = blockPos;
     }
     public VoidBornPortalActivatorC2SPacket(FriendlyByteBuf buf) {
-
+        this.pos = buf.readBlockPos();
     }
     public void toBytes(FriendlyByteBuf buf) {
+        buf.writeBlockPos(pos);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
@@ -29,9 +32,7 @@ public class VoidBornPortalActivatorC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel world = player.serverLevel().getLevel();
-            HitResult hitResult = player.pick(player.getBlockReach(),0,false);
-            Endcraft.LOGGER.info(String.valueOf(hitResult));
-            world.sendParticles(ModParticles.VOID_BORN_PARTICLES.get(), hitResult.getLocation().x, hitResult.getLocation().y,hitResult.getLocation().z,2000,0,0,0,2);
+            world.sendParticles(ModParticles.VOID_BORN_PARTICLES.get(), pos.getX(), pos.getY(), pos.getZ(),2000,0,0,0,2);
         });
         return true;
     }

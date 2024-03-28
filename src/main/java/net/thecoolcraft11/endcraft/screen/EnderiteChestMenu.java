@@ -10,21 +10,21 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
-import net.thecoolcraft11.endcraft.block.entity.EssenceAltarBlockEntity;
+import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 
-public class EssenceAltarMenu extends AbstractContainerMenu {
-    public final EssenceAltarBlockEntity blockEntity;
+public class EnderiteChestMenu extends AbstractContainerMenu {
+    public final EnderiteChestBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public EssenceAltarMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+    public EnderiteChestMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(29));
     }
 
-    public EssenceAltarMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.ESSENCE_ALTAR_MENU.get(), pContainderId);
-        checkContainerSize(inventory, 18);
-        blockEntity = ((EssenceAltarBlockEntity) entity);
+    public EnderiteChestMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.ENDERITE_CHEST_MENU.get(), pContainderId);
+        checkContainerSize(inventory, 29);
+        blockEntity = ((EnderiteChestBlockEntity) entity);
         this.level = inventory.player.level();
         this.data = data;
 
@@ -32,41 +32,44 @@ public class EssenceAltarMenu extends AbstractContainerMenu {
         addPlayerHotbar(inventory);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 8, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 26, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 44, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 62, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 8, 25));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 26, 25));
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 44, 25));
-            this.addSlot(new SlotItemHandler(iItemHandler, 7, 62, 25));
-            this.addSlot(new SlotItemHandler(iItemHandler, 8, 8, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 9, 26, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 10, 44, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 11, 62, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 12, 8, 61));
-            this.addSlot(new SlotItemHandler(iItemHandler, 13, 26, 61));
-            this.addSlot(new SlotItemHandler(iItemHandler, 14, 44, 61));
-            this.addSlot(new SlotItemHandler(iItemHandler, 15, 62, 61));
-            this.addSlot(new SlotItemHandler(iItemHandler, 16, 116, 7));
-            this.addSlot(new SlotItemHandler(iItemHandler, 17, 116, 61));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 8, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 26, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 44, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 62,18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 98, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 116, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 7, 134, 18));
+            this.addSlot(new SlotItemHandler(iItemHandler, 8, 152, 18));
+
+            this.addSlot(new SlotItemHandler(iItemHandler, 9, 8, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 10, 26, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 11, 44, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 12, 62,36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 13, 80, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 14, 98, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 15, 116, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 16, 134, 36));
+            this.addSlot(new SlotItemHandler(iItemHandler, 17, 152, 36));
+
+            this.addSlot(new SlotItemHandler(iItemHandler, 18, 8, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 19, 26, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 20, 44, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 21, 62,54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 22, 80, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 23, 98, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 24, 116, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 25, 134, 54));
+            this.addSlot(new SlotItemHandler(iItemHandler, 26, 152, 54));
+
+            this.addSlot(new SlotItemHandler(iItemHandler, 27, 178, 22));
+            this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 28, 178, 64));
+
         });
 
         addDataSlots(data);
     }
 
-
-    public boolean isCrafting() {
-        return data.get(0) > 0;
-    }
-
-    public int getScaledProgress() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);
-        int progressArrowSize = 26;
-
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-    }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -84,7 +87,7 @@ public class EssenceAltarMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 18;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 29;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -119,7 +122,7 @@ public class EssenceAltarMenu extends AbstractContainerMenu {
     }
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.ESSENCE_ALTAR.get());
+        return true;
     }
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {

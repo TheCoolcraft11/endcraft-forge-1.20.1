@@ -109,7 +109,7 @@ public class VoidbornAbyssPortalActivator extends Block {
                                             ModMessages.sendToServer(new EnderFlameC2SPacket(pPos.offset(2,-1, -5)));
                                             ModMessages.sendToServer(new EnderFlameC2SPacket(pPos.offset(-2,-1, 5)));
                                             ModMessages.sendToServer(new EnderFlameC2SPacket(pPos.offset(-2,-1, -5)));
-                                            ModMessages.sendToServer(new VoidBornPortalActivatorC2SPacket());
+                                            ModMessages.sendToServer(new VoidBornPortalActivatorC2SPacket(pPos));
                                             pLevel.setBlock(pPos, ModBlocks.VOIDBORN_ABYSS_PORTAL_ACTIVATOR.get().defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER).setValue(ON, true),0);
                                             pLevel.setBlock(pPos.below(1), ModBlocks.VOIDBORN_ABYSS_PORTAL_ACTIVATOR.get().defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(ON, true),0);
                                             Vec3 lookDirection = pPlayer.getLookAngle().scale(-1.0);

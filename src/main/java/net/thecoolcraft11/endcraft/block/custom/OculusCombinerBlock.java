@@ -61,7 +61,7 @@ public class OculusCombinerBlock extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.OCULUS_COMBINER.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.OCULUS_COMBINER_BE.get(),
                 (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 

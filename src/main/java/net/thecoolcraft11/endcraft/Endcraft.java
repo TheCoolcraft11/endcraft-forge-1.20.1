@@ -86,6 +86,7 @@ public class Endcraft {
             EntityRenderers.register(ModEntities.VOID_GHOST.get(), VoidGhostRenderer::new);
             EntityRenderers.register(ModEntities.OCULUS_ORE_PROJECTILE.get(), ThrownItemRenderer::new);
             MenuScreens.register(ModMenuTypes.OCULUS_COMBINER_MENU.get(), OculusCombinerScreen::new);
+            MenuScreens.register(ModMenuTypes.ENDERITE_CHEST_MENU.get(), EnderiteChestScreen::new);
         }
     }
 }

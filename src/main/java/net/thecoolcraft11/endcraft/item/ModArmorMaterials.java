@@ -11,7 +11,7 @@ import org.apache.commons.compress.archivers.dump.DumpArchiveEntry;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    ENDERITE("enderite", 26, new int[]{5, 7,6,4}, 26, SoundEvents.ARMOR_EQUIP_DIAMOND, 1f, 0.665f, () -> Ingredient.of(ModItems.ENDERITE_INGOT.get()));
+    ENDERITE("enderite", 26, new int[]{7, 9,6,5}, 26, SoundEvents.ARMOR_EQUIP_DIAMOND, 1f, 0.01f, () -> Ingredient.of(ModItems.ENDERITE_INGOT.get()));
 
     private final String name;
     private final int durabilityMultiplier;
@@ -22,7 +22,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngreadient;
 
-    private static final int[] BASE_DURABILITY = {11, 16, 16, 13};
+    private static final int[] BASE_DURABILITY = {15, 19, 18, 13};
 
     ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantmentValue, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngreadient) {
         this.name = name;

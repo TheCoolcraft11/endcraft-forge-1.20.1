@@ -77,11 +77,13 @@
   "message.endcraft.phantasma_prism_mode.3": "Mode: Remove Cube(3)",
   "message.endcraft.phantasma_prism_mode.4": "Mode: Remove Sphere(4)",
   "message.endcraft.phantasma_prism_mode.5": "Mode: Hollow Cube(5)",
+  "message.endcraft.phantasma_prism_mode.6": "Mode: Pyramid(6)",
   "message.endcraft.phantasma_prism_mode_item.1": "Cube(1)",
   "message.endcraft.phantasma_prism_mode_item.2": "Sphere(2)",
   "message.endcraft.phantasma_prism_mode_item.3": "Remove Cube(3)",
   "message.endcraft.phantasma_prism_mode_item.4": "Remove Sphere(4)",
   "message.endcraft.phantasma_prism_mode_item.5": "Hollow Cube(5)",
+  "message.endcraft.phantasma_prism_mode_item.6": "Pyramid(6)",
   "message.endcraft.enderite_chest.pwd_not_match": "Password does not match!",
   "message.endcraft.enderite_chest.no_access": "You don't have access to that block!",
   "message.endcraft.enderite_chest.already_aligned": "This key is already aligned to a Enderite Chest!",
@@ -90,5 +92,9 @@
   "enchantment.level.12" : "XII",
   "enchantment.level.13" : "XIII",
   "enchantment.level.14" : "XIV",
-  "enchantment.level.15" : "XV"
+  "enchantment.level.15" : "XV",
+
+  "key.category.endcraft": "Endcraft: Beyond The Void",
+  "key.endcraft.armor_ability": "Armor Ability",
+  "key.endcraft.armor_ability_2": "Armor Ability 2"
 }
