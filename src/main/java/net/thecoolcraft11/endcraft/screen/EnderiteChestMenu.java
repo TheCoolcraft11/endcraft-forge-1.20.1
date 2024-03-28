@@ -1,6 +1,7 @@
 package net.thecoolcraft11.endcraft.screen;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -11,19 +12,22 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
+import net.thecoolcraft11.endcraft.screen.slot.EnderiteAccessSlot;
 
 public class EnderiteChestMenu extends AbstractContainerMenu {
     public final EnderiteChestBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
+    private static final int SLOTS_PER_ROW = 9;
+    private final int containerRows = 6;
 
     public EnderiteChestMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(29));
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(65));
     }
 
     public EnderiteChestMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.ENDERITE_CHEST_MENU.get(), pContainderId);
-        checkContainerSize(inventory, 29);
+        checkContainerSize(inventory, 41);
         blockEntity = ((EnderiteChestBlockEntity) entity);
         this.level = inventory.player.level();
         this.data = data;
@@ -32,38 +36,28 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
         addPlayerHotbar(inventory);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 8, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 26, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 44, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 62,18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 80, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 98, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 116, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 7, 134, 18));
-            this.addSlot(new SlotItemHandler(iItemHandler, 8, 152, 18));
 
-            this.addSlot(new SlotItemHandler(iItemHandler, 9, 8, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 10, 26, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 11, 44, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 12, 62,36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 13, 80, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 14, 98, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 15, 116, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 16, 134, 36));
-            this.addSlot(new SlotItemHandler(iItemHandler, 17, 152, 36));
 
-            this.addSlot(new SlotItemHandler(iItemHandler, 18, 8, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 19, 26, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 20, 44, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 21, 62,54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 22, 80, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 23, 98, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 24, 116, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 25, 134, 54));
-            this.addSlot(new SlotItemHandler(iItemHandler, 26, 152, 54));
+            int x;
+            int y;
+            for(x = 0; x < containerRows; ++x) {
+                for(y = 0; y < 9; ++y) {
+                    this.addSlot(new SlotItemHandler(iItemHandler, y + x * 9, 8 + y * 18, 18 + x * 18));
+                }
+            }
 
-            this.addSlot(new SlotItemHandler(iItemHandler, 27, 178, 22));
-            this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 28, 178, 64));
+            this.addSlot(new SlotItemHandler(iItemHandler, 54, 178, 21));
+            this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 55, 178, 63));
+
+            this.addSlot(new SlotItemHandler(iItemHandler, 56, 180,108));
+            this.addSlot(new SlotItemHandler(iItemHandler, 57, 198,108));
+            this.addSlot(new SlotItemHandler(iItemHandler, 58, 216,108));
+            this.addSlot(new SlotItemHandler(iItemHandler, 59, 180,126));
+            this.addSlot(new SlotItemHandler(iItemHandler, 60, 198,126));
+            this.addSlot(new SlotItemHandler(iItemHandler, 61, 216,126));
+            this.addSlot(new SlotItemHandler(iItemHandler, 62, 180,144));
+            this.addSlot(new SlotItemHandler(iItemHandler, 63, 198,144));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler, blockEntity,64, 216,144));
 
         });
 
@@ -87,7 +81,7 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 29;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 64;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -124,17 +118,19 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
     public boolean stillValid(Player player) {
         return true;
     }
+
+
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 140 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 198));
         }
     }
 }

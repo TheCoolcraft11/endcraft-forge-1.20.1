@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.item.ModItems;
 
 public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(Endcraft.MOD_ID, "textures/gui/enderite_chest_gui.png");
@@ -19,7 +20,8 @@ public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMe
     @Override
     protected void init() {
         super.init();
-        titleLabelY = 1/20;
+        titleLabelY = 1;
+        inventoryLabelY = 125;
     }
 
     @Override
@@ -30,9 +32,11 @@ public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMe
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        guiGraphics.blit(TEXTURE, x, y, 0, 0, 201, 166);
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, 256, 256);
+        guiGraphics.drawString(Minecraft.getInstance().font, Component.translatable("gui.endcraft.enderite_chest.guests"), x+ 180, y+ 98,0xFFFFFF);
 
     }
+
 
 
     @Override

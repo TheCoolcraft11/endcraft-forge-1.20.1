@@ -109,7 +109,15 @@ public class EnderiteChestBlock extends BaseEntityBlock {
                     } else {
                         throw new IllegalStateException("Our Container provider is missing!");
                     }
-                } else{
+                }else if (((EnderiteChestBlockEntity) blockEntity).isGuest(pPlayer)) {
+                    BlockEntity entity = pLevel.getBlockEntity(pPos);
+                    if(entity instanceof EnderiteChestBlockEntity) {
+                        NetworkHooks.openScreen(((ServerPlayer)pPlayer), (EnderiteChestBlockEntity)entity, pPos);
+                    } else {
+                        throw new IllegalStateException("Our Container provider is missing!");
+                    }
+                }
+                else{
                     pPlayer.displayClientMessage(Component.translatable("message.endcraft.enderite_chest.no_access").withStyle(ChatFormatting.DARK_RED), true);
                 }
             }
@@ -117,6 +125,7 @@ public class EnderiteChestBlock extends BaseEntityBlock {
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
+
 
     @Nullable
     @Override

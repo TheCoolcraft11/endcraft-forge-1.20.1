@@ -20,6 +20,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.screen.EnderiteChestMenu;
 import org.jetbrains.annotations.NotNull;
@@ -29,9 +30,9 @@ import java.util.UUID;
 
 
 public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvider {
-    private static UUID placer = null;
-    private static UUID pwd = null;
-    private final ItemStackHandler inventory = new ItemStackHandler(29);
+    private UUID placer = null;
+    private UUID pwd = null;
+    private final ItemStackHandler inventory = new ItemStackHandler(65);
     private static final int INPUT_SLOT = 27;
     private static final int OUTPUT_SLOT = 28;
 
@@ -52,7 +53,7 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
 
             @Override
             public int getCount() {
-                return 29;
+                return 65;
             }
         };
     }
@@ -77,6 +78,17 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
     }
     public UUID getPlacer() {
         return  this.placer;
+    }
+    public boolean isGuest(Player player) {
+        boolean isGuest = false;
+        for (int i = 0; i < 9;i++) {
+            if(this.inventory.getStackInSlot(56+ i).getItem() == ModItems.ENDERITE_CHEST_ACCESS_PEARL.get()) {
+                if(this.inventory.getStackInSlot(56+ i).getOrCreateTag().getUUID("playerUUID").equals(player.getUUID())) {
+                    isGuest = true;
+                }
+            }
+        }
+        return isGuest;
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {

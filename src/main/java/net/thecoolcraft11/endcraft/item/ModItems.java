@@ -129,8 +129,8 @@ public class ModItems {
                 () -> new PhantasmaPrismItem(new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_CHEST_KEY = ITEMS.register("enderite_chest_key",
                 () -> new EnderiteChestKey(new Item.Properties()));
-
-
+        public static final RegistryObject<Item> ENDERITE_CHEST_ACCESS_PEARL = ITEMS.register("enderite_chest_access_pearl",
+                () -> new EnderiteChestAccessPearlItem(new Item.Properties().stacksTo(1)));
 
 
 

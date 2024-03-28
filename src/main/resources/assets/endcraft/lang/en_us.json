@@ -29,6 +29,7 @@
   "item.endcraft.enderite_boots": "Enderite Boots",
 
   "tooltip.endcraft.usesleft" : "Uses Left:",
+  "tooltip.endcraft.holdshift": "Hold [Shift]",
 
   "item.endcraft.ender_upgrade": "Ender Upgrade",
 
@@ -87,6 +88,8 @@
   "message.endcraft.enderite_chest.pwd_not_match": "Password does not match!",
   "message.endcraft.enderite_chest.no_access": "You don't have access to that block!",
   "message.endcraft.enderite_chest.already_aligned": "This key is already aligned to a Enderite Chest!",
+
+  "gui.endcraft.enderite_chest.guests" : "Guests: ",
 
   "enchantment.level.11" : "XI",
   "enchantment.level.12" : "XII",

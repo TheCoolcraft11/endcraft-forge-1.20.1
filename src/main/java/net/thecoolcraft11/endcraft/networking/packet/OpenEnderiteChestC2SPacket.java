@@ -33,7 +33,7 @@ public class OpenEnderiteChestC2SPacket {
             BlockEntity entity = world.getBlockEntity(pos);
             if(entity instanceof EnderiteChestBlockEntity) {
                 NetworkHooks.openScreen(player, (EnderiteChestBlockEntity)entity, pos);
-                world.sendParticles(ModParticles.ENDER_FLAME.get(), pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5,500,0.5,1,-0.5,2);
+                world.sendParticles(ModParticles.ENDER_FLAME.get(), pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5,500,0.2,1,-0.2,2);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
