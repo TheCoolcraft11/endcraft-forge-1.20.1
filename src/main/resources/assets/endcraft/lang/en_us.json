@@ -30,6 +30,8 @@
 
   "tooltip.endcraft.usesleft" : "Uses Left:",
   "tooltip.endcraft.holdshift": "Hold [Shift]",
+  "tooltip.endcraft.fillstate1": "This Enderchest has ",
+  "tooltip.endcraft.fillstate2": "% Slots left",
 
   "item.endcraft.ender_upgrade": "Ender Upgrade",
 

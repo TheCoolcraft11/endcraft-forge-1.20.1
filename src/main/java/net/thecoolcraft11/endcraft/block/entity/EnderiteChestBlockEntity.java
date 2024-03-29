@@ -20,7 +20,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.thecoolcraft11.endcraft.Endcraft;
+import net.thecoolcraft11.endcraft.block.custom.EnderiteChestBlock;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.screen.EnderiteChestMenu;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +32,7 @@ import java.util.UUID;
 public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvider {
     private UUID placer = null;
     private UUID pwd = null;
-    private final ItemStackHandler inventory = new ItemStackHandler(65);
+    private final ItemStackHandler inventory = new ItemStackHandler(66);
     private static final int INPUT_SLOT = 27;
     private static final int OUTPUT_SLOT = 28;
 
@@ -53,7 +53,7 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
 
             @Override
             public int getCount() {
-                return 65;
+                return 66;
             }
         };
     }
@@ -65,8 +65,13 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
         }
         return super.getCapability(cap, side);
     }
-    public void setPlacer(UUID placer) {
+    public void setPlacer(UUID placer, String player, BlockPos blockPos) {
         this.placer = placer;
+        this.inventory.setStackInSlot(65, ModItems.ENDERITE_CHEST_OWNER_PEARL.get().getDefaultInstance());
+        this.inventory.getStackInSlot(65).getOrCreateTag().putString("playerName",player);
+        this.inventory.getStackInSlot(65).getOrCreateTag().putInt("x",blockPos.getX());
+        this.inventory.getStackInSlot(65).getOrCreateTag().putInt("y",blockPos.getY());
+        this.inventory.getStackInSlot(65).getOrCreateTag().putInt("z",blockPos.getZ());
         setChanged();
     }
     public void setPwd(UUID pwd) {
@@ -90,7 +95,15 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
         }
         return isGuest;
     }
-
+    public int getFillState() {
+        int fillState = 0;
+        for(int i = 0; i < 54; i++) {
+            if(this.inventory.getStackInSlot(i).isEmpty()) {
+                fillState++;
+            }
+        }
+        return fillState;
+    }
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.ENDERITE_CHEST_KEY.get() && !this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getBoolean("aligned")) {
             this.inventory.setStackInSlot(OUTPUT_SLOT, ModItems.ENDERITE_CHEST_KEY.get().getDefaultInstance());
@@ -113,7 +126,9 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
     public void drops() {
         SimpleContainer simpleContainer = new SimpleContainer(inventory.getSlots());
         for(int i = 0; i < inventory.getSlots(); i++) {
-            simpleContainer.setItem(i, inventory.getStackInSlot(i));
+            if(i != 65) {
+                simpleContainer.setItem(i, inventory.getStackInSlot(i));
+            }
         }
         Containers.dropContents(this.level, this.worldPosition, simpleContainer);
     }
@@ -154,4 +169,5 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
         placer = pTag.getUUID("placer");
         pwd = pTag.getUUID("pwd");
     }
+
 }

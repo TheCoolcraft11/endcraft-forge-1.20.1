@@ -5,7 +5,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.thecoolcraft11.endcraft.Endcraft;
@@ -13,12 +12,12 @@ import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
-public class EnderiteAccessSlot extends Slot {
+public class EnderiteInfoSlot extends Slot {
     private static final Container emptyInventory = new SimpleContainer(0);
     private final IItemHandler itemHandler;
     private final int index;
     private final EnderiteChestBlockEntity blockEntity;
-    public EnderiteAccessSlot(IItemHandler itemHandler, EnderiteChestBlockEntity blockEntity, int index, int pX, int pY) {
+    public EnderiteInfoSlot(IItemHandler itemHandler, EnderiteChestBlockEntity blockEntity, int index, int pX, int pY) {
         super(emptyInventory, index, pX, pY);
         this.itemHandler = itemHandler;
         this.index = index;
@@ -28,17 +27,11 @@ public class EnderiteAccessSlot extends Slot {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        if (stack.getItem() == ModItems.ENDERITE_CHEST_ACCESS_PEARL.get() && stack.getOrCreateTag().contains("playerUUID")) {
-            return stack.isEmpty() ? false : this.itemHandler.isItemValid(this.index, stack);
-        }
         return false;
     }
 
     @Override
     public boolean mayPickup(Player pPlayer) {
-        if (pPlayer.getUUID().equals( blockEntity.getPlacer())) {
-            return !this.getItemHandler().extractItem(this.index, 1, true).isEmpty();
-        }
         return false;
     }
 

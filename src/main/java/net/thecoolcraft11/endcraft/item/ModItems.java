@@ -131,6 +131,8 @@ public class ModItems {
                 () -> new EnderiteChestKey(new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_CHEST_ACCESS_PEARL = ITEMS.register("enderite_chest_access_pearl",
                 () -> new EnderiteChestAccessPearlItem(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> ENDERITE_CHEST_OWNER_PEARL = ITEMS.register("enderite_chest_owner_pearl",
+                () -> new EnderiteChestOwnerPearlItem(new Item.Properties().stacksTo(1)));
 
 
 

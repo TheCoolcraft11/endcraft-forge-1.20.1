@@ -50,7 +50,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> OCULUS_COMBINER = registerBlock("oculus_combiner",
             () -> new OculusCombinerBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ENDERITE_CHEST = registerBlock("enderite_chest",
-            () -> new EnderiteChestBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
+            () -> new EnderiteChestBlock(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).destroyTime(-1).explosionResistance(-1)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

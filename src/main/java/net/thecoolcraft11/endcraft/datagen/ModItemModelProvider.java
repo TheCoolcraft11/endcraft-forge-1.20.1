@@ -87,6 +87,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.ENDERITE_BOOTS);
 
         simpleItem(ModItems.ENDERITE_CHEST_KEY);
+        simpleItem(ModItems.ENDERITE_CHEST_ACCESS_PEARL);
 
     }
 

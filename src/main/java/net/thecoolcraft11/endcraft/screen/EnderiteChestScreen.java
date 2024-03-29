@@ -3,13 +3,13 @@ package net.thecoolcraft11.endcraft.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.thecoolcraft11.endcraft.Endcraft;
-import net.thecoolcraft11.endcraft.item.ModItems;
 
 public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(Endcraft.MOD_ID, "textures/gui/enderite_chest_gui.png");
@@ -22,7 +22,9 @@ public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMe
         super.init();
         titleLabelY = 1;
         inventoryLabelY = 125;
+
     }
+
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {

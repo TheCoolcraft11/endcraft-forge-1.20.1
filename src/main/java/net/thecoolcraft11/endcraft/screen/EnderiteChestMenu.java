@@ -13,6 +13,7 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.screen.slot.EnderiteAccessSlot;
+import net.thecoolcraft11.endcraft.screen.slot.EnderiteInfoSlot;
 
 public class EnderiteChestMenu extends AbstractContainerMenu {
     public final EnderiteChestBlockEntity blockEntity;
@@ -22,7 +23,7 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
     private final int containerRows = 6;
 
     public EnderiteChestMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(65));
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(66));
     }
 
     public EnderiteChestMenu(int pContainderId , Inventory inventory, BlockEntity entity, ContainerData data) {
@@ -58,7 +59,7 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 62, 180,144));
             this.addSlot(new SlotItemHandler(iItemHandler, 63, 198,144));
             this.addSlot(new EnderiteAccessSlot(iItemHandler, blockEntity,64, 216,144));
-
+            this.addSlot(new EnderiteInfoSlot(iItemHandler, blockEntity,65, 80,2));
         });
 
         addDataSlots(data);

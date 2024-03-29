@@ -18,12 +18,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
-import net.thecoolcraft11.endcraft.Endcraft;
-import net.thecoolcraft11.endcraft.block.entity.EnderChargerBlockEntity;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
 import net.thecoolcraft11.endcraft.item.ModItems;
@@ -59,14 +58,13 @@ public class EnderiteChestBlock extends BaseEntityBlock {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
 
-
     @Override
     public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
         if (!pLevel.isClientSide) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof EnderiteChestBlockEntity) {
                 EnderiteChestBlockEntity customBlockEntity = (EnderiteChestBlockEntity) blockEntity;
-                customBlockEntity.setPlacer(pPlacer.getUUID());
+                customBlockEntity.setPlacer(pPlacer.getUUID(), pPlacer.getName().toString(), pPos);
                 customBlockEntity.setPwd(UUID.randomUUID());
 
             }
@@ -84,7 +82,6 @@ public class EnderiteChestBlock extends BaseEntityBlock {
                     if (pPlayer.getItemInHand(pHand).getItem() != ModItems.ENDERITE_CHEST_KEY.get() && !pPlayer.getItemInHand(pHand).getOrCreateTag().getBoolean("aligned")) {
                         BlockEntity entity = pLevel.getBlockEntity(pPos);
                         if(entity instanceof EnderiteChestBlockEntity) {
-                            Endcraft.LOGGER.info("Test");
                             NetworkHooks.openScreen(((ServerPlayer)pPlayer), (EnderiteChestBlockEntity)entity, pPos);
                         } else {
                             throw new IllegalStateException("Our Container provider is missing!");
