@@ -23,6 +23,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.block.entity.ModBlockEntities;
 import net.thecoolcraft11.endcraft.item.ModItems;
@@ -64,7 +65,7 @@ public class EnderiteChestBlock extends BaseEntityBlock {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof EnderiteChestBlockEntity) {
                 EnderiteChestBlockEntity customBlockEntity = (EnderiteChestBlockEntity) blockEntity;
-                customBlockEntity.setPlacer(pPlacer.getUUID(), pPlacer.getName().toString(), pPos);
+                customBlockEntity.setPlacer(pPlacer.getUUID(), pPlacer.getName().getString(), pPos);
                 customBlockEntity.setPwd(UUID.randomUUID());
 
             }

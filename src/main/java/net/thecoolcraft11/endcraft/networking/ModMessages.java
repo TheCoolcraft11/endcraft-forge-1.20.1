@@ -26,6 +26,7 @@ public class ModMessages {
         net.messageBuilder(EnderFlameC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(EnderFlameC2SPacket::new).encoder(EnderFlameC2SPacket::toBytes).consumerMainThread(EnderFlameC2SPacket::handle).add();
         net.messageBuilder(EnderiteArmorTeleportationC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(EnderiteArmorTeleportationC2SPacket::new).encoder(EnderiteArmorTeleportationC2SPacket::toBytes).consumerMainThread(EnderiteArmorTeleportationC2SPacket::handle).add();
         net.messageBuilder(OpenEnderiteChestC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(OpenEnderiteChestC2SPacket::new).encoder(OpenEnderiteChestC2SPacket::toBytes).consumerMainThread(OpenEnderiteChestC2SPacket::handle).add();
+        net.messageBuilder(StaffOTeleportationC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(StaffOTeleportationC2SPacket::new).encoder(StaffOTeleportationC2SPacket::toBytes).consumerMainThread(StaffOTeleportationC2SPacket::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

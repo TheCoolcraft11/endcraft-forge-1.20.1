@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
 import net.minecraftforge.network.NetworkHooks;
+import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
@@ -53,15 +54,18 @@ public class EnderiteChestKey extends Item {
         BlockEntity blockEntity = pLevel.getBlockEntity(pos);
         if (blockEntity instanceof EnderiteChestBlockEntity) {
             EnderiteChestBlockEntity customBlockEntity = (EnderiteChestBlockEntity) blockEntity;
-            if (pPlayer.getItemInHand(pUsedHand).getOrCreateTag().getUUID("pwd").equals(customBlockEntity.getPwd())) {
-                BlockEntity entity = pLevel.getBlockEntity(pos);
-                if(entity instanceof EnderiteChestBlockEntity) {
-                    ModMessages.sendToServer(new OpenEnderiteChestC2SPacket(pos));
+            if (customBlockEntity.getPlacer() != null) {
+                pPlayer.getItemInHand(pUsedHand).getOrCreateTag().getUUID("pwd");
+                if (pPlayer.getItemInHand(pUsedHand).getOrCreateTag().getUUID("pwd").equals(customBlockEntity.getPwd())) {
+                    BlockEntity entity = pLevel.getBlockEntity(pos);
+                    if (entity instanceof EnderiteChestBlockEntity) {
+                        ModMessages.sendToServer(new OpenEnderiteChestC2SPacket(pos));
+                    } else {
+                        throw new IllegalStateException("Our Container provider is missing!");
+                    }
                 } else {
-                    throw new IllegalStateException("Our Container provider is missing!");
+                    pPlayer.displayClientMessage(Component.translatable("message.endcraft.enderite_chest.pwd_not_match").copy().withStyle(ChatFormatting.DARK_RED), true);
                 }
-            }else {
-                pPlayer.displayClientMessage(Component.translatable("message.endcraft.enderite_chest.pwd_not_match").copy().withStyle(ChatFormatting.DARK_RED),true);
             }
         }
         return super.use(pLevel, pPlayer, pUsedHand);

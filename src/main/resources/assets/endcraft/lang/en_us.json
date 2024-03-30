@@ -27,11 +27,19 @@
   "item.endcraft.enderite_chestplate": "Enderite Chestplate",
   "item.endcraft.enderite_leggings": "Enderite Leggings",
   "item.endcraft.enderite_boots": "Enderite Boots",
+  "item.endcraft.enderite_chest_access_pearl": "Enderite Chest Access Pearl",
+  "item.endcraft.enderite_chest_owner_pearl": "",
 
   "tooltip.endcraft.usesleft" : "Uses Left:",
   "tooltip.endcraft.holdshift": "Hold [Shift]",
+  "tooltip.endcraft.enderitechesto" : "'s Enderite Chest",
   "tooltip.endcraft.fillstate1": "This Enderchest has ",
-  "tooltip.endcraft.fillstate2": "% Slots left",
+  "tooltip.endcraft.fillstate2": " empty Slots left",
+  "tooltip.endcraft.dimension.overworld": "Overworld",
+  "tooltip.endcraft.dimension.nether": "Nether",
+  "tooltip.endcraft.dimension.the_end": "The End",
+  "tooltip.endcraft.wrong_dimension": "Cannot create Teleportation Point: Wrong Dimension",
+  "tooltip.endcraft.removed_coords": "Removed All Coords",
 
   "item.endcraft.ender_upgrade": "Ender Upgrade",
 

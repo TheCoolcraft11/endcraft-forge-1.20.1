@@ -20,7 +20,9 @@ public class EnderiteChestScreen extends AbstractContainerScreen<EnderiteChestMe
     @Override
     protected void init() {
         super.init();
-        titleLabelY = 1;
+        titleLabelY = 5;
+        titleLabelX = 4;
+        inventoryLabelX = 4;
         inventoryLabelY = 125;
 
     }

@@ -7,7 +7,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thecoolcraft11.endcraft.Endcraft;
-import net.thecoolcraft11.endcraft.enchantment.ModEnchantments;
 import net.thecoolcraft11.endcraft.entity.ModEntities;
 import net.thecoolcraft11.endcraft.item.custom.*;
 
@@ -133,6 +132,8 @@ public class ModItems {
                 () -> new EnderiteChestAccessPearlItem(new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> ENDERITE_CHEST_OWNER_PEARL = ITEMS.register("enderite_chest_owner_pearl",
                 () -> new EnderiteChestOwnerPearlItem(new Item.Properties().stacksTo(1)));
+        public static final RegistryObject<Item> STAFF_OF_TELEPORTATION = ITEMS.register("staff_of_teleportation",
+                () -> new StaffOfTeleportationItem(new Item.Properties().stacksTo(1).durability(512)));
 
 
 

@@ -1,7 +1,5 @@
 package net.thecoolcraft11.endcraft.event;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -10,8 +8,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.client.Keybinding;
 import net.thecoolcraft11.endcraft.networking.ModMessages;
-import net.thecoolcraft11.endcraft.networking.packet.EnderStaffTeleportationC2SPacket;
 import net.thecoolcraft11.endcraft.networking.packet.EnderiteArmorTeleportationC2SPacket;
+import net.thecoolcraft11.endcraft.networking.packet.StaffOTeleportationC2SPacket;
 
 
 public class ClientEvents {
@@ -23,8 +21,19 @@ public class ClientEvents {
             if(Keybinding.ARMOR_ABILITY_KEY.consumeClick()) {
                 ModMessages.sendToServer(new EnderiteArmorTeleportationC2SPacket(0));
             }
-            if(Keybinding.ARMOR_ABILITY_KEY_2.consumeClick()) {
-                ModMessages.sendToServer(new EnderiteArmorTeleportationC2SPacket(1));
+            if (Keybinding.TELEPORT_KEY_HOLD.isDown()) {
+                if(Keybinding.ARMOR_ABILITY_KEY_2.consumeClick()) {
+                    ModMessages.sendToServer(new EnderiteArmorTeleportationC2SPacket(1));
+                }
+                if(Keybinding.TELEPORT_KEY_1.consumeClick()) {
+                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(1));
+                }
+                if(Keybinding.TELEPORT_KEY_2.consumeClick()) {
+                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(2));
+                }
+                if(Keybinding.TELEPORT_KEY_3.consumeClick()) {
+                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(3));
+                }
             }
         }
     }
@@ -34,6 +43,9 @@ public class ClientEvents {
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(Keybinding.ARMOR_ABILITY_KEY);
             event.register(Keybinding.ARMOR_ABILITY_KEY_2);
+            event.register(Keybinding.TELEPORT_KEY_1);
+            event.register(Keybinding.TELEPORT_KEY_2);
+            event.register(Keybinding.TELEPORT_KEY_3);
 
         }
     }

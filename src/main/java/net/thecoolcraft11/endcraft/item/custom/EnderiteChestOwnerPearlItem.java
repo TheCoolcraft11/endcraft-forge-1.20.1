@@ -39,8 +39,7 @@ public class EnderiteChestOwnerPearlItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if (pStack.getOrCreateTag().contains("playerName") && pStack.getOrCreateTag().contains("x") && pStack.getOrCreateTag().contains("y") && pStack.getOrCreateTag().contains("z")) {
-                pTooltipComponents.add(Component.nullToEmpty(pStack.getOrCreateTag().getString("playerName")).copy().append("'s EnderiteChest").withStyle(ChatFormatting.DARK_PURPLE));
+        if (pStack.getOrCreateTag().contains("x") && pStack.getOrCreateTag().contains("y") && pStack.getOrCreateTag().contains("z")) {
                 if(!Screen.hasShiftDown()) {
                     pTooltipComponents.add(Component.translatable("tooltip.endcraft.holdshift").withStyle(ChatFormatting.GOLD));
                 }else {
@@ -48,8 +47,8 @@ public class EnderiteChestOwnerPearlItem extends Item {
                     int fillState =((EnderiteChestBlockEntity) pLevel.getBlockEntity(pos)).getFillState();
                     float p = (float) fillState / 54 * 100;
                     DecimalFormat df = new DecimalFormat("#.##");
-                    pTooltipComponents.add(Component.translatable("tooltip.endcraft.fillstate1").append(df.format(p).replace(",", ".")).append(Component.translatable("tooltip.endcraft.fillstate2")).withStyle(ChatFormatting.AQUA));
-                    float i = (float) 12 / 54  * 10;
+                    pTooltipComponents.add(Component.translatable("tooltip.endcraft.fillstate1").append(String.valueOf(fillState)).append(Component.translatable("tooltip.endcraft.fillstate2")).withStyle(ChatFormatting.AQUA));
+                    float i = (float) fillState / 54  * 10;
                     int x = (int) i;
                     StringBuilder s = new StringBuilder();
                     for(int i2 = 0; i2 < x; i2++) {
@@ -61,10 +60,19 @@ public class EnderiteChestOwnerPearlItem extends Item {
                     }
                     Component greenComponent = Component.literal(String.valueOf(s)).withStyle(ChatFormatting.GREEN);
                     Component redComponent = Component.literal(String.valueOf(s2)).withStyle(ChatFormatting.RED);
+                    Component pComponent = Component.nullToEmpty(df.format(p).replace(",", ".")).copy().append("%").withStyle(ChatFormatting.YELLOW);
 
-                    pTooltipComponents.add(greenComponent.copy().append(redComponent));
+                    pTooltipComponents.add(greenComponent.copy().append(redComponent).append(" ").append(pComponent));
                 }
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public Component getName(ItemStack pStack) {
+        if(pStack.getOrCreateTag().contains("playerName")) {
+            return (Component.nullToEmpty(pStack.getOrCreateTag().getString("playerName")).copy().append(Component.translatable("tooltip.endcraft.enderitechesto")).withStyle(ChatFormatting.DARK_PURPLE));
+        }
+        return Component.nullToEmpty(null);
     }
 }

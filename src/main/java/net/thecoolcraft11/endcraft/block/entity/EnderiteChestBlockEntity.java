@@ -67,12 +67,16 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
     }
     public void setPlacer(UUID placer, String player, BlockPos blockPos) {
         this.placer = placer;
+        addOwnerPearl(player, blockPos);
+        setChanged();
+    }
+    private void addOwnerPearl(String player, BlockPos blockPos) {
         this.inventory.setStackInSlot(65, ModItems.ENDERITE_CHEST_OWNER_PEARL.get().getDefaultInstance());
         this.inventory.getStackInSlot(65).getOrCreateTag().putString("playerName",player);
         this.inventory.getStackInSlot(65).getOrCreateTag().putInt("x",blockPos.getX());
         this.inventory.getStackInSlot(65).getOrCreateTag().putInt("y",blockPos.getY());
         this.inventory.getStackInSlot(65).getOrCreateTag().putInt("z",blockPos.getZ());
-        setChanged();
+
     }
     public void setPwd(UUID pwd) {
         this.pwd = pwd;

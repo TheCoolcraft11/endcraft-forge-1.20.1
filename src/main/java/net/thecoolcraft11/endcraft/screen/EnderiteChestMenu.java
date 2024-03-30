@@ -50,16 +50,16 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 54, 178, 21));
             this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 55, 178, 63));
 
-            this.addSlot(new SlotItemHandler(iItemHandler, 56, 180,108));
-            this.addSlot(new SlotItemHandler(iItemHandler, 57, 198,108));
-            this.addSlot(new SlotItemHandler(iItemHandler, 58, 216,108));
-            this.addSlot(new SlotItemHandler(iItemHandler, 59, 180,126));
-            this.addSlot(new SlotItemHandler(iItemHandler, 60, 198,126));
-            this.addSlot(new SlotItemHandler(iItemHandler, 61, 216,126));
-            this.addSlot(new SlotItemHandler(iItemHandler, 62, 180,144));
-            this.addSlot(new SlotItemHandler(iItemHandler, 63, 198,144));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 56, 180,108));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 57, 198,108));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 58, 216,108));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 59, 180,126));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 60, 198,126));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 61, 216,126));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 62, 180,144));
+            this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 63, 198,144));
             this.addSlot(new EnderiteAccessSlot(iItemHandler, blockEntity,64, 216,144));
-            this.addSlot(new EnderiteInfoSlot(iItemHandler, blockEntity,65, 80,2));
+            this.addSlot(new EnderiteInfoSlot(iItemHandler, blockEntity,65, 80,1));
         });
 
         addDataSlots(data);
