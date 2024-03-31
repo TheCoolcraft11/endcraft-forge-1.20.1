@@ -127,13 +127,13 @@ public class ModItems {
         public static final RegistryObject<Item> PHANTASMA_PRISM_ITEM = ITEMS.register("phantasma_prism",
                 () -> new PhantasmaPrismItem(new Item.Properties()));
         public static final RegistryObject<Item> ENDERITE_CHEST_KEY = ITEMS.register("enderite_chest_key",
-                () -> new EnderiteChestKey(new Item.Properties()));
+                () -> new EnderiteChestKey(new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> ENDERITE_CHEST_ACCESS_PEARL = ITEMS.register("enderite_chest_access_pearl",
                 () -> new EnderiteChestAccessPearlItem(new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> ENDERITE_CHEST_OWNER_PEARL = ITEMS.register("enderite_chest_owner_pearl",
                 () -> new EnderiteChestOwnerPearlItem(new Item.Properties().stacksTo(1)));
         public static final RegistryObject<Item> STAFF_OF_TELEPORTATION = ITEMS.register("staff_of_teleportation",
-                () -> new StaffOfTeleportationItem(new Item.Properties().stacksTo(1).durability(512)));
+                () -> new StaffOfTeleportationItem(new Item.Properties().stacksTo(1).durability(300)));
 
 
 

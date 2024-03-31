@@ -1,5 +1,7 @@
 package net.thecoolcraft11.endcraft.event;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -21,20 +23,21 @@ public class ClientEvents {
             if(Keybinding.ARMOR_ABILITY_KEY.consumeClick()) {
                 ModMessages.sendToServer(new EnderiteArmorTeleportationC2SPacket(0));
             }
-            if (Keybinding.TELEPORT_KEY_HOLD.isDown()) {
                 if(Keybinding.ARMOR_ABILITY_KEY_2.consumeClick()) {
                     ModMessages.sendToServer(new EnderiteArmorTeleportationC2SPacket(1));
                 }
-                if(Keybinding.TELEPORT_KEY_1.consumeClick()) {
-                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(1));
+
+                if(Keybinding.TELEPORT_KEY_HOLD.isDown()) {
+                    if(Keybinding.TELEPORT_KEY_1.consumeClick()) {
+                        ModMessages.sendToServer(new StaffOTeleportationC2SPacket(1));
+                    }
+                    if(Keybinding.TELEPORT_KEY_2.consumeClick()) {
+                        ModMessages.sendToServer(new StaffOTeleportationC2SPacket(2));
+                    }
+                    if(Keybinding.TELEPORT_KEY_3.consumeClick()) {
+                        ModMessages.sendToServer(new StaffOTeleportationC2SPacket(3));
+                    }
                 }
-                if(Keybinding.TELEPORT_KEY_2.consumeClick()) {
-                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(2));
-                }
-                if(Keybinding.TELEPORT_KEY_3.consumeClick()) {
-                    ModMessages.sendToServer(new StaffOTeleportationC2SPacket(3));
-                }
-            }
         }
     }
     @Mod.EventBusSubscriber(modid = Endcraft.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -46,6 +49,7 @@ public class ClientEvents {
             event.register(Keybinding.TELEPORT_KEY_1);
             event.register(Keybinding.TELEPORT_KEY_2);
             event.register(Keybinding.TELEPORT_KEY_3);
+            event.register(Keybinding.TELEPORT_KEY_HOLD);
 
         }
     }

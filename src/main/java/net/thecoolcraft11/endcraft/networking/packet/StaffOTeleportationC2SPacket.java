@@ -1,8 +1,13 @@
 package net.thecoolcraft11.endcraft.networking.packet;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -15,6 +20,7 @@ import net.thecoolcraft11.endcraft.Endcraft;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.util.Raycast;
 
+import java.rmi.registry.Registry;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -36,27 +42,25 @@ public class StaffOTeleportationC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             ServerLevel world = player.serverLevel().getLevel();
-           ResourceKey<Level> registryKey = Level.OVERWORLD;
-           ResourceKey<Level> registryKey2 = Level.NETHER;
-           ResourceKey<Level> registryKey3 = Level.END;
-            if (player.getMainHandItem().getItem() == ModItems.STAFF_OF_TELEPORTATION.get()) {
-                ServerLevel serverWorld = ((ServerLevel)player.level()).getServer().getLevel(registryKey);
-                ServerLevel serverWorld2 = ((ServerLevel)player.level()).getServer().getLevel(registryKey2);
-                ServerLevel serverWorld3 = ((ServerLevel)player.level()).getServer().getLevel(registryKey3);
-                Endcraft.LOGGER.info(String.valueOf(type));
-                if(player.getMainHandItem().getOrCreateTag().getString("Level"+ type).equals("overworld")) {
-                    player.teleportTo(serverWorld,player.getMainHandItem().getOrCreateTag().getInt("x"+ type), player.getMainHandItem().getOrCreateTag().getInt("y"+ type), player.getMainHandItem().getOrCreateTag().getInt("z"+ type), 1f,1f);
+            if (player.getMainHandItem().getItem() == ModItems.STAFF_OF_TELEPORTATION.get() && !player.getCooldowns().isOnCooldown(ModItems.STAFF_OF_TELEPORTATION.get()) && player.getMainHandItem().getDamageValue() <= 0) {
+                CompoundTag tag = player.getMainHandItem().getOrCreateTag();
+                if (tag.contains("x" + type) && tag.contains("y" + type) && tag.contains("z" + type) && tag.contains("Level" + type)) {
+                    player.teleportTo(deserializeServerLevel(world.getServer(), tag.getString("Level" + type)), tag.getFloat("x" + type), tag.getFloat("y" + type), tag.getFloat("z" + type), 0f, 0f);
+                    player.getMainHandItem().setDamageValue(player.getMainHandItem().getMaxDamage());
+                    player.getCooldowns().addCooldown(ModItems.STAFF_OF_TELEPORTATION.get(), 50);
+                } else {
+                    player.playNotifySound(SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1f, 1f);
                 }
-                if(player.getMainHandItem().getOrCreateTag().getString("Level"+ type).equals("nether")) {
-                    player.teleportTo(serverWorld2,player.getMainHandItem().getOrCreateTag().getInt("x"+ type), player.getMainHandItem().getOrCreateTag().getInt("y"+ type), player.getMainHandItem().getOrCreateTag().getInt("z"+ type), 1f,1f);
-                }
-                if(player.getMainHandItem().getOrCreateTag().getString("Level"+ type).equals("end")) {
-                    player.teleportTo(serverWorld3,player.getMainHandItem().getOrCreateTag().getInt("x"+ type), player.getMainHandItem().getOrCreateTag().getInt("y"+ type), player.getMainHandItem().getOrCreateTag().getInt("z"+ type), 1f,1f);
-                }
-                player.getCooldowns().addCooldown(ModItems.STAFF_OF_TELEPORTATION.get(), 50);
-                player.getMainHandItem().hurtAndBreak(1, player, player1 -> player.broadcastBreakEvent(player.getMainHandItem().getEquipmentSlot()));
             }
         });
         return true;
+    }
+    private static ServerLevel deserializeServerLevel(MinecraftServer server, String dimensionName) {
+        for (ServerLevel level : server.getAllLevels()) {
+            if (level.dimension().location().toString().equals(dimensionName)) {
+                return level;
+            }
+        }
+        return null;
     }
 }

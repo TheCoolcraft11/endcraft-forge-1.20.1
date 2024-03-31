@@ -45,8 +45,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.OCULUS_ORE.get());
                     //    pOutput.accept(ModItems.ENCHANTED_SADDLE);
                         pOutput.accept(ModItems.SHADOW_VEIL.get());
-                    //    pOutput.accept(ModItems.STAFF_OF_TELEPORTATION);
-                    //    pOutput.accept(ModItems.ENDERITE_CHEST_KEY);
+                        pOutput.accept(ModItems.STAFF_OF_TELEPORTATION.get());
+                        pOutput.accept(ModItems.ENDERITE_CHEST_KEY.get());
 
                     })
                     .build());
@@ -66,10 +66,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.VOID_BLOCK.get());
                         pOutput.accept(ModBlocks.VOID_LAYER.get());
                         pOutput.accept(ModBlocks.END_PEDASTEL.get());
-                    //    pOutput.accept(ModItems.ENCHANTED_SADDLE);
-                    //    pOutput.accept(ModItems.STAFF_OF_TELEPORTATION);
-                    //    pOutput.accept(ModBlocks.ENDER_CHEST);
-                    //    pOutput.accept(ModItems.ENDERITE_CHEST_KEY);
+                        pOutput.accept(ModBlocks.ENDERITE_CHEST.get());
                     })
                     .build());
     public static final RegistryObject<CreativeModeTab> ENDCRAFT_TAB_UPGRADES = CREATIVE_MODE_TABS.register("endcraft_upgrades",

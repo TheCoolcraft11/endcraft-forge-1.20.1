@@ -20,7 +20,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.thecoolcraft11.endcraft.block.custom.EnderiteChestBlock;
 import net.thecoolcraft11.endcraft.item.ModItems;
 import net.thecoolcraft11.endcraft.screen.EnderiteChestMenu;
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +32,8 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
     private UUID placer = null;
     private UUID pwd = null;
     private final ItemStackHandler inventory = new ItemStackHandler(66);
-    private static final int INPUT_SLOT = 27;
-    private static final int OUTPUT_SLOT = 28;
+    private static final int INPUT_SLOT = 54;
+    private static final int OUTPUT_SLOT = 55;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     protected final ContainerData data;
@@ -109,7 +108,7 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
         return fillState;
     }
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if(this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.ENDERITE_CHEST_KEY.get() && !this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getBoolean("aligned")) {
+        if(this.inventory.getStackInSlot(INPUT_SLOT).getItem() == ModItems.ENDERITE_CHEST_KEY.get() && !this.inventory.getStackInSlot(INPUT_SLOT).getOrCreateTag().getBoolean("aligned") && outputStackIsEmpty()) {
             this.inventory.setStackInSlot(OUTPUT_SLOT, ModItems.ENDERITE_CHEST_KEY.get().getDefaultInstance());
             this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().putInt("x1", this.worldPosition.getX());
             this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().putInt("y1", this.worldPosition.getY());
@@ -117,10 +116,15 @@ public class EnderiteChestBlockEntity extends BlockEntity implements MenuProvide
             this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().putUUID("pwd", this.getPwd());
             this.inventory.getStackInSlot(OUTPUT_SLOT).getOrCreateTag().putBoolean("aligned", true);
 
-            this.inventory.setStackInSlot(INPUT_SLOT, Items.AIR.getDefaultInstance());
+            this.inventory.getStackInSlot(INPUT_SLOT).shrink(1);
             setChanged(level, pPos, pState);
         }
     }
+
+    private boolean outputStackIsEmpty() {
+        return this.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty();
+    }
+
     @Override
     public void onLoad() {
         super.onLoad();

@@ -80,26 +80,13 @@ public class EnderiteChestBlock extends BaseEntityBlock {
             if (blockEntity instanceof EnderiteChestBlockEntity) {
                 EnderiteChestBlockEntity customBlockEntity = (EnderiteChestBlockEntity) blockEntity;
                 if(customBlockEntity.getPlacer().equals(pPlayer.getUUID())) {
-                    if (pPlayer.getItemInHand(pHand).getItem() != ModItems.ENDERITE_CHEST_KEY.get() && !pPlayer.getItemInHand(pHand).getOrCreateTag().getBoolean("aligned")) {
                         BlockEntity entity = pLevel.getBlockEntity(pPos);
                         if(entity instanceof EnderiteChestBlockEntity) {
                             NetworkHooks.openScreen(((ServerPlayer)pPlayer), (EnderiteChestBlockEntity)entity, pPos);
                         } else {
                             throw new IllegalStateException("Our Container provider is missing!");
+                            }
                         }
-                        
-                    }else {
-                        if (!pPlayer.getItemInHand(pHand).getOrCreateTag().getBoolean("aligned")) {
-                            pPlayer.getItemInHand(pHand).getOrCreateTag().putInt("y1", pPos.getY());
-                            pPlayer.getItemInHand(pHand).getOrCreateTag().putInt("x1", pPos.getX());
-                            pPlayer.getItemInHand(pHand).getOrCreateTag().putInt("z1", pPos.getZ());
-                            pPlayer.getItemInHand(pHand).getOrCreateTag().putUUID("pwd",customBlockEntity.getPwd());
-                            pPlayer.getItemInHand(pHand).getOrCreateTag().putBoolean("aligned", true);
-
-                        }else {
-                            pPlayer.displayClientMessage(Component.translatable("message.endcraft.enderite_chest.already_aligned").withStyle(ChatFormatting.DARK_RED), true);
-                        }
-                    }
                 }else if (pPlayer.getItemInHand(pHand).getItem() == ModItems.ENDERITE_CHEST_KEY.get() && pPlayer.getItemInHand(pHand).getOrCreateTag().getUUID("pwd") == ((EnderiteChestBlockEntity) blockEntity).getPwd()) {
                     BlockEntity entity = pLevel.getBlockEntity(pPos);
                     if(entity instanceof EnderiteChestBlockEntity) {
@@ -119,7 +106,6 @@ public class EnderiteChestBlock extends BaseEntityBlock {
                     pPlayer.displayClientMessage(Component.translatable("message.endcraft.enderite_chest.no_access").withStyle(ChatFormatting.DARK_RED), true);
                 }
             }
-        }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }

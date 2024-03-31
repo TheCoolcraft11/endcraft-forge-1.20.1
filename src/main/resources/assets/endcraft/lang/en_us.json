@@ -35,10 +35,6 @@
   "tooltip.endcraft.enderitechesto" : "'s Enderite Chest",
   "tooltip.endcraft.fillstate1": "This Enderchest has ",
   "tooltip.endcraft.fillstate2": " empty Slots left",
-  "tooltip.endcraft.dimension.overworld": "Overworld",
-  "tooltip.endcraft.dimension.nether": "Nether",
-  "tooltip.endcraft.dimension.the_end": "The End",
-  "tooltip.endcraft.wrong_dimension": "Cannot create Teleportation Point: Wrong Dimension",
   "tooltip.endcraft.removed_coords": "Removed All Coords",
 
   "item.endcraft.ender_upgrade": "Ender Upgrade",
@@ -109,5 +105,9 @@
 
   "key.category.endcraft": "Endcraft: Beyond The Void",
   "key.endcraft.armor_ability": "Armor Ability",
-  "key.endcraft.armor_ability_2": "Armor Ability 2"
+  "key.endcraft.armor_ability_2": "Armor Ability 2",
+  "key.endcraft.teleport_1": "Teleport Staff Teleport 1 (Requires to hold the Hold Key)",
+  "key.endcraft.teleport_2": "Teleport Staff Teleport 2 (Requires to hold the Hold Key)",
+  "key.endcraft.teleport_3": "Teleport Staff Teleport 3 (Requires to hold the Hold Key)",
+  "key.endcraft.teleport_hold": "Teleport Staff Hold (Required to use Teleport Staff Abilities)"
 }

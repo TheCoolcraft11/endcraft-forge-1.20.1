@@ -14,6 +14,7 @@ import net.thecoolcraft11.endcraft.block.ModBlocks;
 import net.thecoolcraft11.endcraft.block.entity.EnderiteChestBlockEntity;
 import net.thecoolcraft11.endcraft.screen.slot.EnderiteAccessSlot;
 import net.thecoolcraft11.endcraft.screen.slot.EnderiteInfoSlot;
+import net.thecoolcraft11.endcraft.screen.slot.EnderiteResultSlot;
 
 public class EnderiteChestMenu extends AbstractContainerMenu {
     public final EnderiteChestBlockEntity blockEntity;
@@ -48,7 +49,7 @@ public class EnderiteChestMenu extends AbstractContainerMenu {
             }
 
             this.addSlot(new SlotItemHandler(iItemHandler, 54, 178, 21));
-            this.addSlot(new FurnaceResultSlot(inventory.player, inventory, 55, 178, 63));
+            this.addSlot(new EnderiteResultSlot(iItemHandler, 55, 178, 63));
 
             this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 56, 180,108));
             this.addSlot(new EnderiteAccessSlot(iItemHandler,blockEntity, 57, 198,108));
